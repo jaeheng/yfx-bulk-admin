@@ -2,7 +2,7 @@
     <div class="layout">
         <div class="menu">
             <router-link to="/dashboard" class="logo">
-                <img src="@img/logo.png" alt="logo">
+                <img src="@img/logo-white.png" alt="logo">
                 后台管理系统
             </router-link>
 
