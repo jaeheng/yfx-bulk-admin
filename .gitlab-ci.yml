@@ -1,0 +1,18 @@
+stages:
+  - test
+
+default:
+  before_script:
+    - source ~/.bashrc
+
+test:
+  stage: test
+  tags:
+    - sjz001
+  script:
+    - yarn
+    - yarn build
+    - /usr/bin/cp -r dist/* /home/yfx/YFX/deploy/admin/
+    - echo Deploy Success!
+  only:
+    - sjz001
