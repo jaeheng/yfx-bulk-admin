@@ -1,22 +1,22 @@
 export const PAGE_LAYOUT = 'total, prev, pager, next, jumper'
 export const PAGE_SIZE = 15
 export const DATA_TYPE = {
-  cell: 0,
-  gene: 1,
-  stCell: 2,
-  stGene: 3
+    cell: 0,
+    gene: 1,
+    stCell: 2,
+    stGene: 3
 }
 /**
  * app配置文件
  */
 export default {
-  dataType: DATA_TYPE,
-  pageSize: PAGE_SIZE,
-  pageLayout: PAGE_LAYOUT
+    dataType: DATA_TYPE,
+    pageSize: PAGE_SIZE,
+    pageLayout: PAGE_LAYOUT
 }
 
 // 本地存储key前缀
-export const STORAGE_SUFFIX = 'yfx_admin'
+export const STORAGE_SUFFIX = 'yfx_bulk_admin'
 // 系统名称
 export const SITE_NAME = import.meta.env.VUE_APP_NAME
 // 版本
@@ -29,26 +29,26 @@ export const BASE_URL = '/api'
 
 // 任务状态
 export const TASK_STATE = {
-  '-1': {
-    text: '未开始',
-    type: 'info'
-  },
-  0: {
-    text: '进行中',
-    type: 'warning'
-  },
-  1: {
-    text: '成功',
-    type: 'success'
-  },
-  2: {
-    text: '失败',
-    type: 'danger'
-  },
-  3: {
-    text: '写入中',
-    type: 'warning'
-  }
+    '-1': {
+        text: '未开始',
+        type: 'info'
+    },
+    0: {
+        text: '进行中',
+        type: 'warning'
+    },
+    1: {
+        text: '成功',
+        type: 'success'
+    },
+    2: {
+        text: '失败',
+        type: 'danger'
+    },
+    3: {
+        text: '写入中',
+        type: 'warning'
+    }
 }
 
 // 注释库默认的维护者
