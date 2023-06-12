@@ -12,7 +12,7 @@ test:
   script:
     - yarn
     - yarn build
-    - /usr/bin/cp -r dist/* /home/yfx/YFX/deploy/admin/
+    - /usr/bin/cp -r dist/* /home/yfx/YFX_BULK/deploy/admin/
     - echo Deploy Success!
   only:
     - sjz001
