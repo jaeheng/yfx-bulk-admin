@@ -5,7 +5,7 @@
     "serve": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "git checkout sjz001 && git merge master && git push origin sjz001 && git checkout master && echo success"
+    "deploy:sjz001": "git checkout sjz001 && git merge master && git push origin sjz001 && git checkout master && echo success"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
