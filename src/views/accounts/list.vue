@@ -35,7 +35,7 @@
             <el-table :data="tableData" v-loading="loading" size="small" row-key="id">
                 <el-table-column label="ID" prop="id" width="120"/>
                 <el-table-column label="项目编号" prop="project"/>
-                <el-table-column label="所属公司" prop="company.company_name"></el-table-column>
+                <el-table-column label="所属公司" prop="company.name"></el-table-column>
                 <el-table-column label="物种" prop="species.alias" width="100"/>
                 <el-table-column label="注释库" prop="library.name" width="100"/>
                 <el-table-column label="任务数" prop="task_count" width="100"/>
@@ -178,7 +178,7 @@ export default {
             getCompanyList({}).then(resp => {
                 this.company = resp.map(item => {
                     return {
-                        label: item.company_name,
+                        label: item.name,
                         value: item.id
                     }
                 })

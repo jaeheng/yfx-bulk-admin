@@ -21,7 +21,7 @@
                     {{ data.due_date - now > 0 ? '' : '(已过期)' }}</el-link>
             </el-descriptions-item>
             <el-descriptions-item label="发邮次数">{{ data.send_email_number }}</el-descriptions-item>
-            <el-descriptions-item label="剩余任务数">{{ data.allow_task_number }}</el-descriptions-item>
+            <el-descriptions-item label="剩余任务数">{{ data.task_limit }}</el-descriptions-item>
             <el-descriptions-item label="原始文件路径">
               <div style="word-break: break-all">
                 {{ data.raw_path }}
@@ -90,82 +90,82 @@ import {dateFmt} from "@/libs/functions";
 import ImportState from "_c/ImportState.vue";
 
 export default {
-  props: ['data'],
-  emits: ['freshData'],
-  components: {
-    ImportState
-  },
-  data() {
-    return {
-      emailSending: false,
-      visible: false,
-      SINGLE_CELL_DATA,
-      SPATIAL_DATA,
-      now: new Date().getTime() / 1000
+    props: ['data'],
+    emits: ['freshData'],
+    components: {
+        ImportState
+    },
+    data() {
+        return {
+            emailSending: false,
+            visible: false,
+            SINGLE_CELL_DATA,
+            SPATIAL_DATA,
+            now: new Date().getTime() / 1000
+        }
+    },
+    methods: {
+        /**
+         * 重置密码
+         */
+        rePwd(row) {
+            this.$confirm('确定要重置该账号的密码?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                let id = row.id
+                this.$util.post(this.api.projectResetPassword, {id}, resp => {
+                    this.$alert(resp.password, '新密码')
+                })
+            }).catch(() => {
+            })
+        },
+        /**
+         * 重置密码并发送邮件
+         */
+        rePwdEmail(row) {
+            let times = row.send_email_number
+            let color = times > 0 ? 'red' : '#000'
+            this.$confirm('确定要重置该账号的密码并发送邮件? <br/> 您已经操作过 <strong style="font-size: 20px;color: ' + color + ';">' + times + '</strong> 次了', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+                dangerouslyUseHTMLString: true
+            }).then(() => {
+                let id = row.id
+                this.emailSending = true
+                this.$util.post(this.api.projectEmail, {id}, () => {
+                    this.$message.success('邮件已发送!')
+                    this.emailSending = false
+                }, () => {
+                    this.emailSending = false
+                })
+            }).catch(() => {
+            })
+        },
+        /**
+         * 重新导入
+         * @param row
+         */
+        reImport(row) {
+            this.$confirm('确定要重新导入该账号数据?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                let id = row.id
+                this.$util.post(this.api.projectImport, {id}, () => {
+                    this.$message.success('操作成功')
+                    this.$emit('freshData')
+                    this.visible = false
+                })
+            }).catch(() => {
+            })
+        },
+        dateFmt(second) {
+            return dateFmt(second)
+        }
     }
-  },
-  methods: {
-    /**
-     * 重置密码
-     */
-    rePwd(row) {
-      this.$confirm('确定要重置该账号的密码?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        let id = row.id
-        this.$util.post(this.api.projectResetPassword, {id}, resp => {
-          this.$alert(resp.password, '新密码')
-        })
-      }).catch(() => {
-      })
-    },
-    /**
-     * 重置密码并发送邮件
-     */
-    rePwdEmail(row) {
-      let times = row.send_email_number
-      let color = times > 0 ? 'red' : '#000'
-      this.$confirm('确定要重置该账号的密码并发送邮件? <br/> 您已经操作过 <strong style="font-size: 20px;color: ' + color + ';">' + times + '</strong> 次了', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-        dangerouslyUseHTMLString: true
-      }).then(() => {
-        let id = row.id
-        this.emailSending = true
-        this.$util.post(this.api.projectEmail, {id}, () => {
-          this.$message.success('邮件已发送!')
-          this.emailSending = false
-        }, () => {
-          this.emailSending = false
-        })
-      }).catch(() => {
-      })
-    },
-    /**
-     * 重新导入
-     * @param row
-     */
-    reImport(row) {
-      this.$confirm('确定要重新导入该账号数据?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        let id = row.id
-        this.$util.post(this.api.projectImport, {id}, () => {
-          this.$message.success('操作成功')
-          this.$emit('freshData')
-          this.visible = false
-        })
-      }).catch(() => {
-      })
-    },
-    dateFmt(second) {
-      return dateFmt(second)
-    }
-  }
 }
 </script>
