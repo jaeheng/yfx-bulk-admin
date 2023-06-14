@@ -102,13 +102,13 @@
             content: '';
             display: block;
             width: 0;
-            height: 3px;
-            background: #fc3c3c;
+            height: 4px;
+            background: #7bc3f8;
             position: absolute;
             left: 50%;
-            bottom: -1px;
+            bottom: 0;
             transition: all .2s;
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         &:hover,
@@ -116,8 +116,8 @@
             color: #fff;
 
             &:after {
-                left: 0;
-                width: 100%;
+                left: 25%;
+                width: 50%;
             }
         }
     }
