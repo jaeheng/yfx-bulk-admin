@@ -25,12 +25,6 @@
                     </el-icon>
                     <template #title>客户管理员</template>
                 </el-menu-item>
-                <el-menu-item index="/projects/pass">
-                    <el-icon>
-                        <Finished/>
-                    </el-icon>
-                    <template #title>试用申请</template>
-                </el-menu-item>
             </el-menu>
         </el-aside>
         <el-container>

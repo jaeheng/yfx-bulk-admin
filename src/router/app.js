@@ -44,15 +44,6 @@ export default {
                     }
                 },
                 {
-                    path: '/projects/pass',
-                    name: 'pass',
-                    component: () => import('_v/projects/pass/index.vue'),
-                    meta: {
-                        title: '试用项目申请',
-                        bread: []
-                    }
-                },
-                {
                     path: '/projects/create',
                     name: 'projectsCreate',
                     component: () => import('_v/projects/create.vue'),
