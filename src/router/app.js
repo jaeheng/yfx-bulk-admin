@@ -36,14 +36,6 @@ export default {
                     }
                 },
                 {
-                    path: '/projects/manages',
-                    name: 'manages',
-                    component: () => import('_v/manages/index.vue'),
-                    meta: {
-                        title: '客户后台项目管理'
-                    }
-                },
-                {
                     path: '/projects/create',
                     name: 'projectsCreate',
                     component: () => import('_v/projects/create.vue'),

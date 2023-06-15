@@ -19,12 +19,6 @@
                     </el-icon>
                     <template #title>已删除项目</template>
                 </el-menu-item>
-                <el-menu-item index="/projects/manages">
-                    <el-icon>
-                        <UserFilled/>
-                    </el-icon>
-                    <template #title>客户管理员</template>
-                </el-menu-item>
             </el-menu>
         </el-aside>
         <el-container>
