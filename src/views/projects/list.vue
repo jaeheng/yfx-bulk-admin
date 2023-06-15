@@ -1,8 +1,8 @@
 <template>
     <div class="projects-list">
-        <page-header description="管理项目账号信息" :image="image">
+        <page-header description="管理项目项目信息" :image="image">
             <router-link to="/projects/create">
-                <el-button type="primary"><i class="iconfont icon-plus"></i> 创建账号</el-button>
+                <el-button type="primary"><i class="iconfont icon-plus"></i> 创建项目</el-button>
             </router-link>
         </page-header>
         <el-card style="margin: 15px 0;" shadow="hover">

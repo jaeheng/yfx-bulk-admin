@@ -17,19 +17,13 @@
                     <el-icon>
                         <DeleteFilled/>
                     </el-icon>
-                    <template #title>已删除账号</template>
+                    <template #title>已删除项目</template>
                 </el-menu-item>
                 <el-menu-item index="/projects/manages">
                     <el-icon>
                         <UserFilled/>
                     </el-icon>
                     <template #title>客户管理员</template>
-                </el-menu-item>
-                <el-menu-item index="/projects/company">
-                    <el-icon>
-                        <Suitcase/>
-                    </el-icon>
-                    <template #title>公司管理</template>
                 </el-menu-item>
                 <el-menu-item index="/projects/pass">
                     <el-icon>

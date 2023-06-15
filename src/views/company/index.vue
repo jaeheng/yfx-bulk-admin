@@ -5,51 +5,53 @@
             <el-button type="primary" @click="create">新建公司信息</el-button>
         </PageHeader>
 
-        <el-table :data="list" v-loading="loading" border>
-            <el-table-column label="公司logo" width="200px">
-                <template #default="scope">
-                    <div class="avatar-uploader" @click="openUpload(scope.row, 'logo')">
-                        <img v-if="scope.row.logo" :src="scope.row.logo" class="avatar">
-                        <i v-else class="iconfont icon-plus avatar-uploader-icon"></i>
-                    </div>
-                </template>
-            </el-table-column>
-            <el-table-column label="公司名称" prop="name">
-                <template #default="scope">
-                    <h3>{{ scope.row.name }}</h3>
-                    <p style="font-size: 12px;color: #999;">{{ scope.row.description || '-' }}</p>
-                </template>
-            </el-table-column>
-            <el-table-column label="付费情况">
-                <template #default="scope">
-                    <template v-if="scope.row.is_paid === 'T'">
-                        <el-tag size="small" type="success">已付费</el-tag>
-                        服务期限: {{ scope.row.due_date || '-' }}
+        <div class="container">
+            <el-table :data="list" v-loading="loading" border>
+                <el-table-column label="公司logo" width="200px">
+                    <template #default="scope">
+                        <div class="avatar-uploader" @click="openUpload(scope.row, 'logo')">
+                            <img v-if="scope.row.logo" :src="scope.row.logo" class="avatar">
+                            <i v-else class="iconfont icon-plus avatar-uploader-icon"></i>
+                        </div>
                     </template>
-                    <template v-else>未付费</template>
-                </template>
-            </el-table-column>
-            <el-table-column label="联系人">
-                <template #default="scope">
-                    姓名: {{ scope.row.contact_name || '-' }}
-                    <p>邮箱: {{ scope.row.contact_email || '-' }}</p>
-                </template>
-            </el-table-column>
-            <el-table-column label="项目数" prop="project_count" sortable></el-table-column>
-            <el-table-column label="创建时间" prop="created_at" sortable></el-table-column>
-            <el-table-column label="状态">
-                <template #default="scope">
-                    <el-tag size="small" type="danger" v-if="scope.row.state === 0">已禁用</el-tag>
-                    <el-tag size="small" type="success" v-else>正常</el-tag>
-                </template>
-            </el-table-column>
-            <el-table-column label="操作">
-                <template #default="scope">
-                    <el-button type="primary" @click="edit(scope.row)">编辑</el-button>
-                    <el-button type="primary" plain @click="$alert(scope.row.remark)">查看备注</el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+                <el-table-column label="公司名称" prop="name">
+                    <template #default="scope">
+                        <h3>{{ scope.row.name }}</h3>
+                        <p style="font-size: 12px;color: #999;">{{ scope.row.description || '-' }}</p>
+                    </template>
+                </el-table-column>
+                <el-table-column label="付费情况">
+                    <template #default="scope">
+                        <template v-if="scope.row.is_paid === 'T'">
+                            <el-tag size="small" type="success">已付费</el-tag>
+                            服务期限: {{ scope.row.due_date || '-' }}
+                        </template>
+                        <template v-else>未付费</template>
+                    </template>
+                </el-table-column>
+                <el-table-column label="联系人">
+                    <template #default="scope">
+                        姓名: {{ scope.row.contact_name || '-' }}
+                        <p>邮箱: {{ scope.row.contact_email || '-' }}</p>
+                    </template>
+                </el-table-column>
+                <el-table-column label="项目数" prop="project_count" sortable></el-table-column>
+                <el-table-column label="创建时间" prop="created_at" sortable></el-table-column>
+                <el-table-column label="状态">
+                    <template #default="scope">
+                        <el-tag size="small" type="danger" v-if="scope.row.state === 0">已禁用</el-tag>
+                        <el-tag size="small" type="success" v-else>正常</el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template #default="scope">
+                        <el-button type="primary" @click="edit(scope.row)">编辑</el-button>
+                        <el-button type="primary" plain @click="$alert(scope.row.remark)">查看备注</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
 
         <el-drawer
             :title="drawerTitle"

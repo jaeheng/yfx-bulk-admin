@@ -43,7 +43,7 @@
             <el-date-picker
                 v-model="form.due_date"
                 type="date"
-                placeholder="请选择账号截至日期"
+                placeholder="请选择项目截至日期"
                 format="YYYY/MM/DD"
                 value-format="X"
             />

@@ -1,7 +1,7 @@
 <template>
     <div class="projects-edit">
         <BreadCrumb/>
-        <el-card shadow="hover" header="修改账号">
+        <el-card shadow="hover" header="修改项目">
             <el-form :model="form" :rules="rules" label-width="120px" label-position="left" v-loading="loading"
                      ref="form">
                 <el-form-item label="项目编号:">
@@ -47,7 +47,7 @@
                 <el-form-item label="联系人邮箱:" prop="email">
                     <el-input v-model="form.email" placeholder="请输入联系人邮箱"/>
                 </el-form-item>
-                <el-form-item label="账号状态:" prop="state">
+                <el-form-item label="项目状态:" prop="state">
                     <el-radio-group v-model="form.state">
                         <el-radio :label="1">可用</el-radio>
                         <el-radio :label="0">禁用</el-radio>
@@ -57,7 +57,7 @@
                     <el-date-picker
                         v-model="form.due_date"
                         type="date"
-                        placeholder="请选择账号截至日期"
+                        placeholder="请选择项目截至日期"
                         format="YYYY/MM/DD"
                         value-format="X"
                     />

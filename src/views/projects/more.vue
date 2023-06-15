@@ -4,7 +4,7 @@
     <el-dialog
         v-model="visible"
         append-to-body
-        title="账号详情"
+        title="项目详情"
         width="1300px">
       <el-row :gutter="20">
         <el-col :span="14">
@@ -30,11 +30,11 @@
             <el-descriptions-item label="所属公司">{{ data.company.company_name }}</el-descriptions-item>
             <el-descriptions-item label="联系人邮箱">{{ data.email }}</el-descriptions-item>
             <el-descriptions-item label="样本路径">{{ data.sample_path }}</el-descriptions-item>
-            <el-descriptions-item label="账号绑定">
+            <el-descriptions-item label="项目绑定">
               <el-table :data="data.user_bind" :border="true">
                 <el-table-column label="ID" prop="id" width="80"></el-table-column>
-                <el-table-column label="单细胞账号" prop="sc_project.project"></el-table-column>
-                <el-table-column label="空间账号" prop="st_project.project"></el-table-column>
+                <el-table-column label="单细胞项目" prop="sc_project.project"></el-table-column>
+                <el-table-column label="空间项目" prop="st_project.project"></el-table-column>
               </el-table>
             </el-descriptions-item>
           </el-descriptions>
@@ -109,7 +109,7 @@ export default {
          * 重置密码
          */
         rePwd(row) {
-            this.$confirm('确定要重置该账号的密码?', '提示', {
+            this.$confirm('确定要重置该项目的密码?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
@@ -127,7 +127,7 @@ export default {
         rePwdEmail(row) {
             let times = row.send_email_number
             let color = times > 0 ? 'red' : '#000'
-            this.$confirm('确定要重置该账号的密码并发送邮件? <br/> 您已经操作过 <strong style="font-size: 20px;color: ' + color + ';">' + times + '</strong> 次了', '提示', {
+            this.$confirm('确定要重置该项目的密码并发送邮件? <br/> 您已经操作过 <strong style="font-size: 20px;color: ' + color + ';">' + times + '</strong> 次了', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning',
@@ -149,7 +149,7 @@ export default {
          * @param row
          */
         reImport(row) {
-            this.$confirm('确定要重新导入该账号数据?', '提示', {
+            this.$confirm('确定要重新导入该项目数据?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'

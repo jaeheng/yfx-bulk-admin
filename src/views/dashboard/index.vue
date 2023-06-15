@@ -35,11 +35,11 @@
                         <el-col :span="8">
                             <div class="entry-item" @click="$router.push('/projects/create')">
                                 <i class="iconfont icon-plus"></i>
-                                <span>创建项目账号</span>
+                                <span>创建项目项目</span>
                             </div>
                         </el-col>
                         <el-col :span="8">
-                            <div class="entry-item" @click="$router.push('/projects/company')">
+                            <div class="entry-item" @click="$router.push('/company')">
                                 <i class="iconfont icon-company"></i>
                                 <span>查看公司信息</span>
                             </div>
@@ -47,7 +47,7 @@
                         <el-col :span="8">
                             <div class="entry-item">
                                 <i class="iconfont icon-shenqing"></i>
-                                <span>审批试用账号</span>
+                                <span>审批试用项目</span>
                             </div>
                         </el-col>
                         <el-col :span="8">

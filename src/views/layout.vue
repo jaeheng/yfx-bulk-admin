@@ -9,6 +9,7 @@
             <div class="el-menu-primary">
                 <div class="links">
                     <router-link to="/dashboard">控制台</router-link>
+                    <router-link to="/company">公司管理</router-link>
                     <router-link to="/projects">项目管理</router-link>
                     <router-link to="/task">任务管理</router-link>
                     <router-link to="/sets">集合管理</router-link>

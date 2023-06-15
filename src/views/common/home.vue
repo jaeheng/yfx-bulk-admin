@@ -11,7 +11,7 @@
                     <h1 class="site-name">BULK_RNASeq 后台</h1>
                     <el-form :model="form" :rules="rules" ref="form" class="form" label-position="top">
                         <el-form-item prop="username">
-                            <el-input v-model="form.username" placeholder="请输入管理员账号"/>
+                            <el-input v-model="form.username" placeholder="请输入管理员项目"/>
                         </el-form-item>
                         <el-form-item prop="password">
                             <el-input
@@ -121,7 +121,7 @@ export default {
             },
             rules: {
                 username: [
-                    {required: true, message: '请输入管理员账号', trigger: 'blur'}
+                    {required: true, message: '请输入管理员项目', trigger: 'blur'}
                 ],
                 password: [
                     {required: true, message: '请输入管理员密码', trigger: 'blur'}

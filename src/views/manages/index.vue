@@ -1,10 +1,10 @@
 <template>
     <div class="projects">
-        <page-header description="管理项目账号信息" :image="image"/>
+        <page-header description="管理项目项目信息" :image="image"/>
         <el-card style="margin: 15px 0;" shadow="hover">
             <el-form inline>
                 <el-form-item style="margin-bottom: 0;">
-                    <el-button type="primary" @click="showDialog(false)"><i class="iconfont icon-plus"></i> 创建账号
+                    <el-button type="primary" @click="showDialog(false)"><i class="iconfont icon-plus"></i> 创建项目
                     </el-button>
                 </el-form-item>
                 <el-form-item label="所属公司:" style="margin-bottom: 0;">
@@ -20,9 +20,9 @@
             <el-table :data="tableList" v-loading="loading">
                 <el-table-column label="ID" prop="id" width="120"/>
                 <el-table-column label="所属公司" prop="company.company_name"></el-table-column>
-                <el-table-column label="账号" prop="account"/>
+                <el-table-column label="项目" prop="account"/>
                 <el-table-column label="创建时间" prop="created_at"/>
-                <el-table-column label="账号状态" prop="status">
+                <el-table-column label="项目状态" prop="status">
                     <template #default="scope">
                         <!-- 0已禁用 1可用 -->
                         <div>
@@ -43,16 +43,16 @@
             </el-table>
         </el-card>
 
-        <el-dialog v-model="visible" :title="(current.id ? '编辑' : '创建') + '项目账号信息'">
+        <el-dialog v-model="visible" :title="(current.id ? '编辑' : '创建') + '项目项目信息'">
             <el-form :model="createForm" :rules="rules" label-position="left" label-width="120px" ref="form">
-                <el-form-item label="账号" prop="account">
-                    <el-input v-model="createForm.account" autocomplete="off" placeholder="请输入账号"/>
+                <el-form-item label="项目" prop="account">
+                    <el-input v-model="createForm.account" autocomplete="off" placeholder="请输入项目"/>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
                     <el-input v-model="createForm.password" autocomplete="off" placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item label="公司" prop="company_id">
-                    <el-select v-model="createForm.company_id" placeholder="账号所属公司">
+                    <el-select v-model="createForm.company_id" placeholder="项目所属公司">
                         <el-option :label="item.label" :value="item.value" v-for="item in company"/>
                     </el-select>
                 </el-form-item>
@@ -117,7 +117,7 @@ export default {
                     {required: true, message: '公司必选', trigger: 'change'}
                 ],
                 account: [
-                    {required: true, message: '账号必填', trigger: 'blur'}
+                    {required: true, message: '项目必填', trigger: 'blur'}
                 ],
                 password: [],
                 status: []

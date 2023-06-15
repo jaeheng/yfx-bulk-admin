@@ -11,7 +11,7 @@ export const getManageList = (params) => {
     })
 }
 /**
- * 创建客户管理员账号
+ * 创建客户管理员项目
  * @param params
  * @returns {Promise<AxiosResponse<any>>}
  */
@@ -19,7 +19,7 @@ export const createManage = (params) => {
     return request.post('/manage/create', params)
 }
 /**
- * 更新客户管理员账号
+ * 更新客户管理员项目
  * @param params
  * @param id
  * @returns {Promise<AxiosResponse<any>>}

@@ -33,7 +33,7 @@ export const getDeletedUser = params => {
 }
 
 /**
- * 恢复账号
+ * 恢复项目
  * @param id
  * @returns {Promise<AxiosResponse<any>>}
  */

@@ -14,6 +14,14 @@ export default {
             }
         },
         {
+            path: '/company',
+            name: 'company',
+            component: () => import('_v/company/index.vue'),
+            meta: {
+                title: '公司管理'
+            }
+        },
+        {
             path: '/projects',
             name: 'projects',
             component: () => import('_v/projects/index.vue'),
@@ -32,15 +40,7 @@ export default {
                     name: 'manages',
                     component: () => import('_v/manages/index.vue'),
                     meta: {
-                        title: '客户后台账号管理'
-                    }
-                },
-                {
-                    path: '/projects/company',
-                    name: 'company',
-                    component: () => import('_v/projects/company/index.vue'),
-                    meta: {
-                        title: '公司管理'
+                        title: '客户后台项目管理'
                     }
                 },
                 {
@@ -48,7 +48,7 @@ export default {
                     name: 'pass',
                     component: () => import('_v/projects/pass/index.vue'),
                     meta: {
-                        title: '试用账号申请',
+                        title: '试用项目申请',
                         bread: []
                     }
                 },
@@ -57,7 +57,7 @@ export default {
                     name: 'projectsCreate',
                     component: () => import('_v/projects/create.vue'),
                     meta: {
-                        title: '创建账号',
+                        title: '创建项目',
                         bread: [
                             {
                                 name: 'projects',
@@ -71,7 +71,7 @@ export default {
                     name: 'projectsEdit',
                     component: () => import('_v/projects/edit.vue'),
                     meta: {
-                        title: '编辑账号',
+                        title: '编辑项目',
                         bread: [
                             {
                                 name: 'projects',
@@ -99,7 +99,7 @@ export default {
                     name: 'projectsDeleted',
                     component: () => import('_v/projects/deleted.vue'),
                     meta: {
-                        title: '已删除账号',
+                        title: '已删除项目',
                         bread: [
                             {
                                 name: 'projects',

@@ -1,6 +1,6 @@
 <template>
     <div class="projects-list">
-        <page-header description="管理已删除项目账号信息" :image="image"></page-header>
+        <page-header description="管理已删除项目项目信息" :image="image"></page-header>
         <el-card style="margin: 15px 0;" shadow="hover">
             <el-form>
                 <el-row :gutter="15">
@@ -63,12 +63,12 @@
                 <el-table-column label="操作" width="300">
                     <template #default="scope">
                         <confirm-button
-                            message="确认要恢复该账号?"
+                            message="确认要恢复该项目?"
                             confirm-type="warning"
                             type="warning"
                             :params="scope.row.id"
                             :request="recoverUser"
-                            success-message="账号已恢复，可以继续使用"
+                            success-message="项目已恢复，可以继续使用"
                             :disabled="!!scope.row.is_deleted"
                             @success="fetchData">
                             <el-icon>
@@ -78,12 +78,12 @@
                         </confirm-button>
 
                         <confirm-button
-                            message="确认要将该账号彻底删除?"
+                            message="确认要将该项目彻底删除?"
                             confirm-type="warning"
                             type="danger"
                             :params="scope.row.id"
                             :request="confirmDeleteUser"
-                            success-message="账号已彻底删除，无法恢复，请知悉"
+                            success-message="项目已彻底删除，无法恢复，请知悉"
                             @success="fetchData">
                             <el-icon>
                                 <DeleteFilled/>
