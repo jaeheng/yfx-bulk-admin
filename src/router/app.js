@@ -90,6 +90,20 @@ export default {
                             }
                         ]
                     }
+                },
+                {
+                    path: '/projects/import/:id',
+                    name: 'projectsImport',
+                    component: () => import('_v/projects/import.vue'),
+                    meta: {
+                        title: '导入项目数据',
+                        bread: [
+                            {
+                                name: 'projects',
+                                title: '项目列表'
+                            }
+                        ]
+                    }
                 }
             ]
         },

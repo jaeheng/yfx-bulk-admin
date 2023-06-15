@@ -1,43 +1,34 @@
 <template>
-    <el-button type="primary" plain @click="visible = true">
-        <i class="iconfont icon-import"></i> 导入
-    </el-button>
-    <el-dialog
-        v-model="visible"
-        append-to-body
-        title="导入数据"
-        width="1300px">
-        导入数据
-        <i class="iconfont icon-import"></i>
-    </el-dialog>
+    <div class="project-import">
+        <BreadCrumb/>
+        <el-row :gutter="16" style="margin-bottom: 16px;">
+            <el-col :span="12">
+                <el-card shadow="never" header="填写矩阵文件路径导入">
+                    <import-path :id="id"/>
+                </el-card>
+            </el-col>
+            <el-col :span="12">
+                <el-card shadow="never" header="上传矩阵文件导入">
+                    <import-upload :id="id"/>
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-card shadow="never" header="导入记录">
+            <import-log :id="id"/>
+        </el-card>
+    </div>
 </template>
 <script>
+import BreadCrumb from "_c/BreadCrumb.vue";
+import ImportPath from './import-path.vue'
+import ImportUpload from "./import-upload.vue";
+import ImportLog from "./import-log.vue";
+
 export default {
-    props: ['id'],
+    components: {ImportUpload, BreadCrumb, ImportPath, ImportLog},
     data() {
         return {
-            visible: false
-        }
-    },
-    methods: {
-        /**
-         * 重新导入
-         * @param row
-         */
-        reImport(row) {
-            this.$confirm('确定要重新导入该项目数据?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-            }).then(() => {
-                let id = row.id
-                this.$util.post(this.api.projectImport, {id}, () => {
-                    this.$message.success('操作成功')
-                    this.$emit('freshData')
-                    this.visible = false
-                })
-            }).catch(() => {
-            })
+            id: this.$route.params.id
         }
     }
 }

@@ -42,21 +42,24 @@
                 <el-table-column label="创建时间" prop="created_at" width="220"/>
                 <el-table-column label="付费情况">
                     <template #default="scope">
-                        <template v-if="scope.row.is_paid === 'T'">
-                            已付费({{ scope.row.due_date }}到期)
-                        </template>
-                        <template v-else>未付费</template>
+                        <paid-state :due-date="scope.row.due_date" :is-paid="scope.row.is_paid"></paid-state>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="420">
                     <template #default="scope">
-                        <router-link :to="{ name: 'projectsEdit', params: { id: scope.row.id } }"
-                                     style="margin-right: 10px;">
+                        <router-link :to="{ name: 'projectsEdit', params: { id: scope.row.id } }">
                             <el-button type="primary" plain>
                                 <i class="iconfont icon-edit"></i> 编辑
                             </el-button>
                         </router-link>
-                        <project-import :id="scope.row.id"></project-import>
+                        <router-link :to="{ name: 'projectsImport', params: { id: scope.row.id } }"
+                                     style="margin: 0 10px;">
+
+                            <el-button type="primary" plain @click="visible = true">
+                                <i class="iconfont icon-import"></i> 导入
+                            </el-button>
+                        </router-link>
+
                         <more :data="scope.row" style="margin-left: 10px;" @freshData="fetchData"></more>
                     </template>
                 </el-table-column>
@@ -90,14 +93,13 @@ import PageHeader from '_c/PageHeader.vue'
 import image from '@img/project.png'
 import {getCompanyList} from "@/request/modules/company"
 import more from './more.vue'
-import {dateFmt} from "@/libs/functions";
-import ProjectImport from './import.vue';
+import PaidState from "_c/PaidState.vue";
 
 export default {
     components: {
         PageHeader,
         more,
-        ProjectImport
+        PaidState
     },
     watch: {
         page() {
@@ -161,9 +163,6 @@ export default {
             }).catch(() => {
                 this.companyLoading = false
             })
-        },
-        dateFmt(second) {
-            return dateFmt(second)
         }
     },
     mounted() {
