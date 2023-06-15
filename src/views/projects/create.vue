@@ -1,5 +1,5 @@
 <template>
-    <div class="accounts-create">
+    <div class="projects-create">
         <BreadCrumb/>
         <el-card shadow="hover" header="创建账号">
             <project-form ref="projectForm" @submit="submitHandle"/>
@@ -17,7 +17,7 @@ export default {
     methods: {
         submitHandle(form) {
             createProject(form).then(() => {
-                this.$router.push('/accounts')
+                this.$router.push('/projects')
                 this.$message.success('创建账号成功')
                 this.$refs.projectForm.submitSuccess()
             }).catch(this.$refs.projectForm.submitSuccess)

@@ -33,13 +33,13 @@
                 <el-card shadow="hover" v-loading="loading" style="height: 220px">
                     <el-row class="entry-items" :gutter="20">
                         <el-col :span="8">
-                            <div class="entry-item" @click="$router.push('/accounts/create')">
+                            <div class="entry-item" @click="$router.push('/projects/create')">
                                 <i class="iconfont icon-plus"></i>
                                 <span>创建项目账号</span>
                             </div>
                         </el-col>
                         <el-col :span="8">
-                            <div class="entry-item" @click="$router.push('/accounts/company')">
+                            <div class="entry-item" @click="$router.push('/projects/company')">
                                 <i class="iconfont icon-company"></i>
                                 <span>查看公司信息</span>
                             </div>

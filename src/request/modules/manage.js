@@ -1,7 +1,7 @@
 import request from '@/request'
 
 /**
- * 获取客户管理员账号列表
+ * 获取客户管理员项目列表
  * @param params
  * @returns {Promise<AxiosResponse<any>>}
  */

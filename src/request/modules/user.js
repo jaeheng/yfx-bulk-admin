@@ -1,4 +1,5 @@
 import request from '@/request'
+
 export const getUserInfo = (params) => {
     return request.get('/user/info', {
         params
@@ -11,17 +12,17 @@ export const editUserInfo = (data) => {
 
 export const getFieldList = (id) => {
     return request.get('/project/field', {
-        params: { id }
+        params: {id}
     })
 }
 
 export const getProjectInfo = id => {
     return request.get('/project/info', {
-        params: { id }
+        params: {id}
     })
 }
 /**
- * 获取已经软删除的账号列表
+ * 获取已经软删除的项目列表
  * @param params
  * @returns {Promise<AxiosResponse<any>>}
  */
@@ -37,7 +38,7 @@ export const getDeletedUser = params => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export const recoverUser = id => {
-    return request.post('/project/recover', { id })
+    return request.post('/project/recover', {id})
 }
 
 /**
@@ -46,5 +47,5 @@ export const recoverUser = id => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export const confirmDeleteUser = id => {
-    return request.post('/project/confirmDelete', { id })
+    return request.post('/project/confirmDelete', {id})
 }

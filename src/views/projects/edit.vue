@@ -1,5 +1,5 @@
 <template>
-    <div class="accounts-edit">
+    <div class="projects-edit">
         <BreadCrumb/>
         <el-card shadow="hover" header="修改账号">
             <el-form :model="form" :rules="rules" label-width="120px" label-position="left" v-loading="loading"
@@ -172,7 +172,7 @@ export default {
                     this.$util.post(this.api.projectEdit, form, () => {
                         this.$message.success('修改成功')
                         this.submitting = false
-                        this.$router.push('/accounts')
+                        this.$router.push('/projects')
                     }, () => {
                         this.submitting = false
                     })

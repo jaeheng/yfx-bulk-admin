@@ -1,7 +1,7 @@
 <template>
-    <div class="accounts-list">
+    <div class="projects-list">
         <page-header description="管理项目账号信息" :image="image">
-            <router-link to="/accounts/create">
+            <router-link to="/projects/create">
                 <el-button type="primary"><i class="iconfont icon-plus"></i> 创建账号</el-button>
             </router-link>
         </page-header>
@@ -31,7 +31,7 @@
                 </el-row>
             </el-form>
         </el-card>
-        <el-card header="账号列表" shadow="hover">
+        <el-card header="项目列表" shadow="hover">
             <el-table :data="tableData" v-loading="loading" size="small" row-key="id">
                 <el-table-column label="ID" prop="id" width="120"/>
                 <el-table-column label="项目编号" prop="project"/>
@@ -40,28 +40,24 @@
                 <el-table-column label="注释库" prop="library.name" width="100"/>
                 <el-table-column label="任务数" prop="task_count" width="100"/>
                 <el-table-column label="样本数" prop="sample_count" width="100"/>
-                <el-table-column label="创建时间" prop="created_at" width="220">
+                <el-table-column label="创建时间" prop="created_at" width="220"/>
+                <el-table-column label="付费情况">
                     <template #default="scope">
-                        <el-link
-                            v-if="scope.row.pid === 0"
-                            :underline="false"
-                            :title="'截至日期：' + dateFmt(scope.row.due_date)"
-                            :type="scope.row.due_date - now > 0 ? 'default' : 'danger'">
-                            {{ scope.row.created_at }}
-                            {{ scope.row.due_date - now > 0 ? '' : '(已过期)' }}
-                        </el-link>
-                        <el-link v-else :underline="false">{{ scope.row.created_at }}</el-link>
+                        <template v-if="scope.row.is_paid === 'T'">
+                            已付费({{ scope.row.due_date }}到期)
+                        </template>
+                        <template v-else>未付费</template>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="120">
                     <template #default="scope">
-                        <router-link :to="{ name: 'accountsEdit', params: { id: scope.row.id } }">
+                        <router-link :to="{ name: 'projectsEdit', params: { id: scope.row.id } }">
                             <el-button size="small" type="primary" circle plain>
                                 <i class="iconfont icon-edit"></i>
                             </el-button>
                         </router-link>
 
-                        <router-link :to="{ name: 'accountsField', params: { id: scope.row.id } }"
+                        <router-link :to="{ name: 'projectsField', params: { id: scope.row.id } }"
                                      style="margin: 0 10px;">
                             <el-button size="small" type="warning" circle plain>
                                 <i class="iconfont icon-select"></i>
@@ -86,7 +82,7 @@
 </template>
 
 <style lang="scss" scoped>
-.accounts {
+.projects {
     padding-bottom: 50px;
 
     .el-form-item--large {
