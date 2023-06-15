@@ -29,9 +29,11 @@
     </el-container>
 </template>
 <script setup>
-import {User, UserFilled, Suitcase, Finished, DeleteFilled} from "@element-plus/icons-vue";
+import {User, DeleteFilled} from "@element-plus/icons-vue";
 </script>
 <script>
+
+
 import {mapGetters} from "vuex";
 
 export default {

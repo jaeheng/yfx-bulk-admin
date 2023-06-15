@@ -18,7 +18,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import {editUserInfo, getUserInfo} from "@/request/modules/user";
+import {editUserInfo, getUserInfo} from "@/request/modules/project";
 import image from '@img/user.png'
 import PageHeader from "_c/PageHeader.vue";
 

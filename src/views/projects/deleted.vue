@@ -138,7 +138,7 @@ import PageHeader from '_c/PageHeader.vue'
 import image from '@img/project.png'
 import {getCompanyList} from "@/request/modules/company"
 import ImportState from "_c/ImportState.vue";
-import {getDeletedUser, recoverUser, confirmDeleteUser} from "@/request/modules/user";
+import {getDeletedUser, recoverUser, confirmDeleteUser} from "@/request/modules/project";
 import {RefreshLeft, DeleteFilled} from "@element-plus/icons-vue";
 import ConfirmButton from "_c/ConfirmButton.vue";
 

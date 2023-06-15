@@ -49,3 +49,21 @@ export const recoverUser = id => {
 export const confirmDeleteUser = id => {
     return request.post('/project/confirmDelete', {id})
 }
+
+/**
+ * 创建项目信息
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const createProject = (params) => {
+    return request.post('/project/create', params)
+}
+
+/**
+ * 编辑项目信息
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const editProject = (params) => {
+    return request.post('/project/edit', params)
+}

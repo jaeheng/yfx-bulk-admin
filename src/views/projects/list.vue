@@ -32,12 +32,11 @@
             </el-form>
         </el-card>
         <el-card header="项目列表" shadow="hover">
-            <el-table :data="tableData" v-loading="loading" size="small" row-key="id">
+            <el-table :data="tableData" v-loading="loading" row-key="id">
                 <el-table-column label="ID" prop="id" width="120"/>
+                <el-table-column label="YFX编号" prop="yfx_id"/>
                 <el-table-column label="项目编号" prop="project"/>
                 <el-table-column label="所属公司" prop="company.name"></el-table-column>
-                <el-table-column label="物种" prop="species.alias" width="100"/>
-                <el-table-column label="注释库" prop="library.name" width="100"/>
                 <el-table-column label="任务数" prop="task_count" width="100"/>
                 <el-table-column label="样本数" prop="sample_count" width="100"/>
                 <el-table-column label="创建时间" prop="created_at" width="220"/>
@@ -49,21 +48,15 @@
                         <template v-else>未付费</template>
                     </template>
                 </el-table-column>
-                <el-table-column label="操作" width="120">
+                <el-table-column label="操作" width="420">
                     <template #default="scope">
-                        <router-link :to="{ name: 'projectsEdit', params: { id: scope.row.id } }">
-                            <el-button size="small" type="primary" circle plain>
-                                <i class="iconfont icon-edit"></i>
+                        <router-link :to="{ name: 'projectsEdit', params: { id: scope.row.id } }"
+                                     style="margin-right: 10px;">
+                            <el-button type="primary" plain>
+                                <i class="iconfont icon-edit"></i> 编辑
                             </el-button>
                         </router-link>
-
-                        <router-link :to="{ name: 'projectsField', params: { id: scope.row.id } }"
-                                     style="margin: 0 10px;">
-                            <el-button size="small" type="warning" circle plain>
-                                <i class="iconfont icon-select"></i>
-                            </el-button>
-                        </router-link>
-
+                        <project-import :id="scope.row.id"></project-import>
                         <more :data="scope.row" style="margin-left: 10px;" @freshData="fetchData"></more>
                     </template>
                 </el-table-column>
@@ -89,22 +82,6 @@
         margin-bottom: 0;
     }
 }
-
-.import-log {
-    font-size: 13px;
-    max-height: 300px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-}
-</style>
-<style lang="scss">
-.import-log {
-    span {
-        display: inline-block;
-        width: 100px;
-        text-align: center;
-    }
-}
 </style>
 
 <script>
@@ -114,11 +91,13 @@ import image from '@img/project.png'
 import {getCompanyList} from "@/request/modules/company"
 import more from './more.vue'
 import {dateFmt} from "@/libs/functions";
+import ProjectImport from './import.vue';
 
 export default {
     components: {
         PageHeader,
         more,
+        ProjectImport
     },
     watch: {
         page() {

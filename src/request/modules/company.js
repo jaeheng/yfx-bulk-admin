@@ -13,11 +13,3 @@ export const getCompanyList = (params) => {
         params
     })
 }
-/**
- * 创建公司信息
- * @param params
- * @returns {Promise<AxiosResponse<any>>}
- */
-export const createProject = (params) => {
-    return request.post('/project/create', params)
-}

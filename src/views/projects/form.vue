@@ -156,6 +156,11 @@ export default {
         },
         submitSuccess() {
             this.submitting = false
+        },
+        setDefault(data) {
+            Object.keys(this.form).map(key => {
+                this.form[key] = data[key] === undefined ? '' : data[key]
+            })
         }
     },
     created() {
