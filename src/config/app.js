@@ -62,3 +62,8 @@ export const ANNOTATION_REQUIRES = ['GO', 'KEGG', 'PPI', 'TF', 'inferCNV', 'Reac
 export const SINGLE_CELL_DATA = 'sc'
 // 空间数据标志
 export const SPATIAL_DATA = 'st'
+
+export const MATRIX_TYPE = {
+    counts: 'counts',
+    normalized: 'normalized'
+}

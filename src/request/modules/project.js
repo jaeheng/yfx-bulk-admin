@@ -67,3 +67,12 @@ export const createProject = (params) => {
 export const editProject = (params) => {
     return request.post('/project/edit', params)
 }
+
+/**
+ * 用路径方式导入
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const importFromPath = (params) => {
+    return request.post('/project/import/path', params)
+}
