@@ -8,7 +8,7 @@
                       :autosize="{ minRows: 2, maxRows: 3 }"/>
         </el-form-item>
         <el-form-item label="物种:" prop="species">
-            <el-radio-group v-model="form.species" v-loading="speciesLoading" @change="getAnnotationLibrary">
+            <el-radio-group v-model="form.species" v-loading="speciesLoading" @change="form.annotation_library_id = ''">
                 <el-radio :label="item.id" v-for="item in speciesList" :key="item.id">{{
                         item.alias
                     }}
@@ -17,7 +17,7 @@
         </el-form-item>
         <el-form-item label="注释库:" prop="annotation_library_id">
             <el-select v-model="form.annotation_library_id" v-loading="annotationLibraryLoading">
-                <el-option v-for="item in annotationLibrary" :key="item.id" :label="item.name"
+                <el-option v-for="item in annotationLibraryOptions" :key="item.id" :label="item.name"
                            :value="item.id"></el-option>
             </el-select>
         </el-form-item>
@@ -64,7 +64,7 @@ export default {
                 project: '',
                 description: '',
                 company_id: '',
-                species: '0',
+                species: '',
                 annotation_library_id: '',
                 email: '',
                 task_limit: 9999,
@@ -107,30 +107,27 @@ export default {
             company: []
         }
     },
+    computed: {
+        annotationLibraryOptions() {
+            return this.annotationLibrary.filter(item => item.species_id === this.form.species)
+        }
+    },
     methods: {
         getSpeciesList() {
             this.speciesLoading = true
             getSpeciesList({}).then(resp => {
                 this.speciesList = resp
                 this.speciesLoading = false
-                if (resp[0]) {
-                    this.form.species = resp[0].id
-                }
-                this.getAnnotationLibrary()
             }).catch(() => {
                 this.speciesLoading = false
             })
         },
         getAnnotationLibrary() {
             this.annotationLibraryLoading = true
-            getAnnotationList({species_id: this.form.species}).then(resp => {
+            getAnnotationList().then(resp => {
                 this.annotationLibrary = resp
                 this.annotationLibraryLoading = false
-                if (resp[0]) {
-                    this.form.annotation_library_id = resp[0].id
-                } else {
-                    this.form.annotation_library_id = ''
-                }
+                this.form.annotation_library_id = ''
             }).catch(() => {
                 this.annotationLibraryLoading = false
             })
@@ -165,6 +162,7 @@ export default {
     },
     created() {
         this.getSpeciesList()
+        this.getAnnotationLibrary()
         this.fetchCompany()
     }
 }

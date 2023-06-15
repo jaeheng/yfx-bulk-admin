@@ -40,13 +40,10 @@ export const deleteSpecies = id => {
 
 /**
  * 获取注释库列表
- * @param params
  * @returns {Promise<AxiosResponse<any>>}
  */
-export const getAnnotationList = params => {
-    return request.get('/library/list', {
-        params
-    })
+export const getAnnotationList = () => {
+    return request.get('/library/list')
 }
 
 /**
