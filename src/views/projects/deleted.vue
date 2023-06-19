@@ -14,15 +14,6 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="6">
-                        <el-form-item label="平台">
-                            <el-select v-model="form.user_type" class="full-width">
-                                <el-option value="all" label="所有平台"></el-option>
-                                <el-option :value="SINGLE_CELL_DATA" label="单细胞"></el-option>
-                                <el-option :value="SPATIAL_DATA" label="空间"></el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="6">
                         <el-form-item label="关键字:">
                             <el-input class="search" v-model="form.keyword" @keyup.enter="search"
                                       placeholder="请输入关键字搜索"/>
@@ -40,13 +31,8 @@
             <el-table :data="tableData" v-loading="loading" row-key="id">
                 <el-table-column label="ID" prop="id" width="120"/>
                 <el-table-column label="项目编号" prop="project"/>
-                <el-table-column label="所属公司" prop="company.company_name"></el-table-column>
+                <el-table-column label="所属公司" prop="company.name"></el-table-column>
                 <el-table-column label="任务数" prop="task_count"/>
-                <el-table-column label="平台">
-                    <template #default="scope">
-                        {{ platformText[scope.row.user_type] }}
-                    </template>
-                </el-table-column>
                 <el-table-column label="样本数">
                     <template #default="scope">
                         {{ scope.row.sample_count }}
@@ -54,7 +40,7 @@
                 </el-table-column>
                 <el-table-column label="确认删除">
                     <template #default="scope">
-                        <el-tag v-if="scope.row.is_deleted" type="warning">已确认</el-tag>
+                        <el-tag v-if="scope.row.is_deleted === 'T'" type="warning">已确认</el-tag>
                         <el-tag v-else type="info">未确认</el-tag>
                     </template>
                 </el-table-column>
@@ -69,7 +55,7 @@
                             :params="scope.row.id"
                             :request="recoverUser"
                             success-message="项目已恢复，可以继续使用"
-                            :disabled="!!scope.row.is_deleted"
+                            :disabled="scope.row.is_deleted === 'T'"
                             @success="fetchData">
                             <el-icon>
                                 <RefreshLeft/>

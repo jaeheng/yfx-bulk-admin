@@ -1,5 +1,5 @@
 <template>
-    import upload {{ id }}
+    暂不支持，请等待更新。
 </template>
 
 <script>
