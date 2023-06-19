@@ -3,6 +3,8 @@
         <el-table :data="list">
             <el-table-column label="ID" prop="id"></el-table-column>
             <el-table-column label="文件名" prop="origin_name"></el-table-column>
+            <el-table-column label="时间" prop="created_at"></el-table-column>
+            <el-table-column label="类型" prop="type"></el-table-column>
         </el-table>
     </div>
 </template>

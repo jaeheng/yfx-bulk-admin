@@ -24,7 +24,7 @@ export default {
         return {
             MATRIX_TYPE,
             form: {
-                path: '/Users/zhangjiawei/YFX_BULK/exp.xls',
+                path: '',
                 type: 'counts' // counts/normalized
             },
             rules: {
