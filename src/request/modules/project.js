@@ -76,3 +76,15 @@ export const editProject = (params) => {
 export const importFromPath = (params) => {
     return request.post('/project/import/path', params)
 }
+
+/**
+ * 导入记录
+ * @param id
+ * @param page
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const importLog = (id, page) => {
+    return request.get('/project/import/log', {
+        params: {project_id: id, page}
+    })
+}
