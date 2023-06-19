@@ -1,6 +1,5 @@
 import request from '@/request'
-export const toolList = (params) => {
-    return request.get('/tool', {
-        params
-    })
+
+export const getToolList = () => {
+    return request.get('/tools', {})
 }

@@ -141,15 +141,6 @@ export default {
                     }
                 },
                 {
-                    path: '/system/upgrade',
-                    name: 'upgrade',
-                    component: () => import('_v/system/upgrade/index.vue'),
-                    meta: {
-                        title: '更新记录',
-                        bread: []
-                    }
-                },
-                {
                     path: '/system/species',
                     name: 'species',
                     component: () => import('_v/system/species/index.vue'),
@@ -190,56 +181,23 @@ export default {
             path: '/tool',
             name: 'tool',
             component: () => import('_v/tool/index.vue'),
-            redirect: '/tool/sc',
             meta: {
                 title: '工具管理'
-            },
-            children: [
-                {
-                    path: '/tool/edit/sc',
-                    name: 'toolEditSc',
-                    component: () => import('_v/tool/edit.vue'),
-                    meta: {
-                        title: '工具信息编辑',
-                        bread: [
-                            {
-                                name: 'toolSc',
-                                title: '单细胞工具'
-                            }
-                        ]
-                    }
-                },
-                {
-                    path: '/tool/edit/st',
-                    name: 'toolEditSt',
-                    component: () => import('_v/tool/edit.vue'),
-                    meta: {
-                        title: '工具信息编辑',
-                        bread: [
-                            {
-                                name: 'toolSt',
-                                title: '空间工具'
-                            }
-                        ]
-                    }
-                },
-                {
-                    path: '/tool/sc',
-                    name: 'toolSc',
-                    component: () => import('_v/tool/sc.vue'),
-                    meta: {
+            }
+        },
+        {
+            path: '/tool/edit',
+            name: 'toolEditSc',
+            component: () => import('_v/tool/edit.vue'),
+            meta: {
+                title: '工具信息编辑',
+                bread: [
+                    {
+                        name: 'toolSc',
                         title: '单细胞工具'
                     }
-                },
-                {
-                    path: '/tool/st',
-                    name: 'toolSt',
-                    component: () => import('_v/tool/st.vue'),
-                    meta: {
-                        title: '空间工具'
-                    }
-                }
-            ]
+                ]
+            }
         },
         {
             path: '/statistic',
