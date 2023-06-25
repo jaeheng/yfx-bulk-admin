@@ -10,20 +10,10 @@
             <el-form-item label="维护者" prop="maintainer">
                 <el-input v-model="form.maintainer" placeholder="请输入维护者联系方式"/>
             </el-form-item>
-            <el-form-item label="包含的单细胞工具" prop="tool">
+            <el-form-item label="包含的工具" prop="tool">
                 <div style="line-height: 1;">
                     <el-checkbox-group v-model="form.tool">
-                        <el-checkbox v-for="item in tools" :key="'sc' + item.id" :label="item.id">{{
-                                item.tool_name
-                            }}
-                        </el-checkbox>
-                    </el-checkbox-group>
-                </div>
-            </el-form-item>
-            <el-form-item label="包含的空间工具" prop="st_tool">
-                <div style="line-height: 1;">
-                    <el-checkbox-group v-model="form.st_tool">
-                        <el-checkbox v-for="item in st_tools" :key="'st' + item.id" :label="item.id">{{
+                        <el-checkbox v-for="item in tools" :key="item.id" :label="item.id">{{
                                 item.tool_name
                             }}
                         </el-checkbox>
@@ -119,7 +109,6 @@ export default {
                 description: '',
                 maintainer: DEFAULT_MAINTAINER,
                 tool: [],
-                st_tool: [],
                 require: {},
                 public: {}
             },
@@ -134,17 +123,13 @@ export default {
                     {required: true, message: '请填写维护者', trigger: 'blur'}
                 ],
                 tool: [
-                    {type: 'array', required: true, message: '请至少选择一个可用的工具', trigger: 'change'},
-                ],
-                st_tool: [
-                    {type: 'array', required: true, message: '请至少选择一个可用的工具', trigger: 'change'},
+                    {type: 'array', message: '请至少选择一个可用的工具', trigger: 'change'},
                 ]
             },
             visible: false,
             require: [],
             requirements: ANNOTATION_REQUIRES,
             tools: [],
-            st_tools: [],
             public: {name: '', version: ''},
             submitting: false,
             species_id: 0
@@ -166,10 +151,8 @@ export default {
             this.public.version = ''
             if (row) {
                 keys.map(key => {
-                    if (['st_tool', 'tool'].includes(key)) {
-                        if (!row[key]) {
-                            row[key] = []
-                        }
+                    if (key === 'tool' && !row[key]) {
+                        row[key] = []
                     }
                     this.form[key] = row[key]
                 })
@@ -184,7 +167,6 @@ export default {
                     maintainer: DEFAULT_MAINTAINER,
                     require: [],
                     tool: [],
-                    st_tool: [],
                     public: {}
                 }
                 this.require = []
@@ -206,16 +188,9 @@ export default {
         fetchTools(platform) {
             this.loadingTools = true
             getToolList({platform}).then(resp => {
-                console.log(resp)
-                const tools = resp.filter(item => {
-                    return item.species_related
+                this.tools = resp.filter(item => {
+                    return item.is_species_related === 'T'
                 })
-                if (platform === SINGLE_CELL_DATA) {
-                    this.tools = tools
-                }
-                if (platform === SPATIAL_DATA) {
-                    this.st_tools = tools
-                }
                 this.loadingTools = false
             }).catch(() => {
                 this.loadingTools = false
@@ -234,10 +209,6 @@ export default {
             this.form.require = this.filterRequire(this.form.require)
             this.form.tool = _.uniq(this.form.tool).filter(item => {
                 return this.tools.map(item => item.id).includes(item)
-            })
-
-            this.form.st_tool = _.uniq(this.form.st_tool).filter(item => {
-                return this.st_tools.map(item => item.id).includes(item)
             })
             const data = this.id ? {...this.form, id: this.id, species_id: this.species_id} : {
                 ...this.form,

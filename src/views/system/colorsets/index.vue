@@ -11,7 +11,8 @@
         <ul class="color-list">
             <li v-for="item in list" :key="item.id">
                 <div class="info">
-                    <h3>{{ item.name }} <span v-if="item.default" style="font-size: 13px;color: #4daf4a;">（默认）</span>
+                    <h3>{{ item.name }} <span v-if="item.default === 'T'"
+                                              style="font-size: 13px;color: #4daf4a;">（默认）</span>
                     </h3>
                     <div class="btns">
                         <el-button type="primary" size="small" plain @click="openDrawer(item)">编辑</el-button>
@@ -41,8 +42,8 @@
                 </el-form-item>
                 <el-form-item label="是否默认" prop="default">
                     <el-radio-group v-model="form.default">
-                        <el-radio :label="0">否</el-radio>
-                        <el-radio :label="1">是</el-radio>
+                        <el-radio label="F">否</el-radio>
+                        <el-radio label="T">是</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="颜色集" prop="color">
@@ -145,7 +146,7 @@ export default {
                 id: 0,
                 color: '',
                 name: '',
-                default: 0
+                default: 'F'
             },
             rules: {
                 name: [
@@ -195,7 +196,7 @@ export default {
                 this.form.id = 0
                 this.form.color = ''
                 this.form.name = ''
-                this.form.default = 0
+                this.form.default = 'F'
             }
             this.drawer = true
         },
@@ -206,7 +207,7 @@ export default {
             const id = this.form.id
             const name = this.form.name
             const isDefault = this.form.default
-            const color = JSON.stringify(this.colorExplode)
+            const color = this.colorExplode
             const api = id ? this.api.editColorSet : this.api.addColorSet
             this.$refs.form.validate(valid => {
                 if (valid) {
