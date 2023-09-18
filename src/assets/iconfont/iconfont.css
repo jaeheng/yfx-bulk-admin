@@ -1,0 +1,291 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4108340 */
+  src: url('iconfont.woff2?t=1695016605513') format('woff2'),
+       url('iconfont.woff?t=1695016605513') format('woff'),
+       url('iconfont.ttf?t=1695016605513') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-setting2:before {
+  content: "\e739";
+}
+
+.icon-filter2:before {
+  content: "\e63b";
+}
+
+.icon-table:before {
+  content: "\e658";
+}
+
+.icon-import:before {
+  content: "\e6be";
+}
+
+.icon-help:before {
+  content: "\e615";
+}
+
+.icon-human:before {
+  content: "\e617";
+}
+
+.icon-remark:before {
+  content: "\e64b";
+}
+
+.icon-version:before {
+  content: "\e68d";
+}
+
+.icon-new:before {
+  content: "\e673";
+}
+
+.icon-upload:before {
+  content: "\e666";
+}
+
+.icon-error:before {
+  content: "\e603";
+}
+
+.icon-st:before {
+  content: "\e89f";
+}
+
+.icon-sample:before {
+  content: "\e630";
+}
+
+.icon-login:before {
+  content: "\e653";
+}
+
+.icon-sc:before {
+  content: "\e64d";
+}
+
+.icon-guding:before {
+  content: "\e7a4";
+}
+
+.icon-select:before {
+  content: "\e736";
+}
+
+.icon-star:before {
+  content: "\e634";
+}
+
+.icon-tuijian:before {
+  content: "\e637";
+}
+
+.icon-company:before {
+  content: "\e62e";
+}
+
+.icon-warning:before {
+  content: "\e63f";
+}
+
+.icon-pdf:before {
+  content: "\e60a";
+}
+
+.icon-download:before {
+  content: "\e619";
+}
+
+.icon-free:before {
+  content: "\e6ab";
+}
+
+.icon-loading:before {
+  content: "\e627";
+}
+
+.icon-time:before {
+  content: "\e6f3";
+}
+
+.icon-vip:before {
+  content: "\e61b";
+}
+
+.icon-ding:before {
+  content: "\fc2c";
+}
+
+.icon-setting:before {
+  content: "\1004f";
+}
+
+.icon-yiwen:before {
+  content: "\fc3b";
+}
+
+.icon-shuju:before {
+  content: "\fc40";
+}
+
+.icon-jiesuo:before {
+  content: "\fc50";
+}
+
+.icon-mima:before {
+  content: "\fc51";
+}
+
+.icon-shaixuan:before {
+  content: "\fc52";
+}
+
+.icon-gengduo:before {
+  content: "\fc58";
+}
+
+.icon-guanyuwomen:before {
+  content: "\fc59";
+}
+
+.icon-shanchu:before {
+  content: "\fc62";
+}
+
+.icon-guanbi:before {
+  content: "\fc6a";
+}
+
+.icon-upload1:before {
+  content: "\10050";
+}
+
+.icon-up:before {
+  content: "\e61d";
+}
+
+.icon-left:before {
+  content: "\e628";
+}
+
+.icon-right:before {
+  content: "\e642";
+}
+
+.icon-down:before {
+  content: "\e654";
+}
+
+.icon-more:before {
+  content: "\e614";
+}
+
+.icon-save:before {
+  content: "\e616";
+}
+
+.icon-copy:before {
+  content: "\e709";
+}
+
+.icon-color:before {
+  content: "\e678";
+}
+
+.icon-rat:before {
+  content: "\e8de";
+}
+
+.icon-unlink:before {
+  content: "\eb0f";
+}
+
+.icon-jinggao:before {
+  content: "\e715";
+}
+
+.icon-success:before {
+  content: "\e623";
+}
+
+.icon-cluster:before {
+  content: "\e643";
+}
+
+.icon-link1:before {
+  content: "\e756";
+}
+
+.icon-copy-outline:before {
+  content: "\e6e6";
+}
+
+.icon-gene:before {
+  content: "\e691";
+}
+
+.icon-download1:before {
+  content: "\e6e0";
+}
+
+.icon-edit:before {
+  content: "\e66e";
+}
+
+.icon-search:before {
+  content: "\e67d";
+}
+
+.icon-dna:before {
+  content: "\e932";
+}
+
+.icon-geneset:before {
+  content: "\e9af";
+}
+
+.icon-plus:before {
+  content: "\e625";
+}
+
+.icon-mouse:before {
+  content: "\e6a5";
+}
+
+.icon-quanxuan:before {
+  content: "\f199";
+}
+
+.icon-fanxuan:before {
+  content: "\e622";
+}
+
+.icon-collection:before {
+  content: "\fc2b";
+}
+
+.icon-xiatiao:before {
+  content: "\e638";
+}
+
+.icon-shangtiao:before {
+  content: "\e639";
+}
+
+.icon-menu:before {
+  content: "\e601";
+}
+
+.icon-dashboard:before {
+  content: "\e602";
+}
+

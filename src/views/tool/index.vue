@@ -50,7 +50,7 @@ export default {
             total: 0,
             image,
             form: {
-                state: params ? params.state : 1,
+                state: params ? params.state : 'T',
                 type: params ? params.type : (this.platform === SPATIAL_DATA ? DATA_TYPE.stCell : DATA_TYPE.cell)
             },
             SINGLE_CELL_DATA,

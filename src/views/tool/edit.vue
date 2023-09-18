@@ -59,7 +59,7 @@
                         <el-form-item label="小图标提示">
                             <el-radio-group v-model="form.badge">
                                 <el-radio :label="item" v-for="item in badge" :key="item">
-                                    <i class="iconfont" :class="item" style="font-size: 28px;" v-if="badge"></i>
+                                    <i class="iconfont" :class="item" style="font-size: 28px;" v-if="item"></i>
                                     <span v-else>无</span>
                                 </el-radio>
                             </el-radio-group>
@@ -112,6 +112,9 @@ import image from '@img/tool.svg'
 import BreadCrumb from "_c/BreadCrumb.vue";
 import {getToken} from "@/libs/storage";
 import api from '@/config/api'
+import icons from '@/assets/iconfont/iconfont.json'
+
+console.log(icons)
 
 export default {
     components: {
@@ -119,13 +122,16 @@ export default {
         editor
     },
     data() {
+        const iconFonts = icons.glyphs.map(item => {
+            return icons.css_prefix_text + item.font_class
+        })
         return {
             api,
             image,
             tool_key: '',
             data_type: '',
             icon_path: '',
-            badge: ['', 'icon-new', 'icon-tuijian', 'icon-star'],
+            badge: ['', ...iconFonts],
             form: {
                 is_show: 0,
                 min: 0,
