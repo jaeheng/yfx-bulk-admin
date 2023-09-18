@@ -75,7 +75,8 @@
                 <el-col :span="8">
                     <div style="text-align: center">
                         <h3>图标设置</h3>
-                        <img :src="img" style="border: 5px solid #ddd;margin-bottom: 15px;padding: 5px;">
+                        <img :src="icon_path" style="border: 5px solid #ddd;margin-bottom: 15px;padding: 5px;"
+                             alt="icon_path"/>
                         <el-upload
                             class="upload-demo"
                             drag
@@ -109,7 +110,8 @@ import {getSuffix} from '@/libs/functions'
 import editor from '_c/editor.vue'
 import image from '@img/tool.svg'
 import BreadCrumb from "_c/BreadCrumb.vue";
-import {getToken} from "../../libs/storage";
+import {getToken} from "@/libs/storage";
+import api from '@/config/api'
 
 export default {
     components: {
@@ -118,10 +120,11 @@ export default {
     },
     data() {
         return {
+            api,
             image,
             tool_key: '',
             data_type: '',
-            img: '',
+            icon_path: '',
             badge: ['', 'icon-new', 'icon-tuijian', 'icon-star'],
             form: {
                 is_show: 0,
@@ -167,7 +170,7 @@ export default {
                     })
                     this.tool_key = resp.tool_key
                     this.data_type = resp.data_type
-                    this.img = resp.img
+                    this.icon_path = resp.icon_path
                     this.$refs.methodDescEditor.setDefault(resp.method_desc || '')
                     this.$refs.captionEditor.setDefault(resp.caption || '')
                     this.loading = false
@@ -207,7 +210,7 @@ export default {
         success(resp, file) {
             this.uploading = false
             if (resp.code === 200) {
-                this.img = URL.createObjectURL(file.raw)
+                this.icon_path = URL.createObjectURL(file.raw)
                 this.$message.success(resp.message)
             } else {
                 this.$message.error(resp.message)

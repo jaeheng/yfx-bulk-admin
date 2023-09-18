@@ -37,7 +37,7 @@
         </el-table-column>
         <el-table-column label="图标" width="100">
             <template #default="scope">
-                <el-image :src="scope.row.img" class="icon" style="height: 32px;"></el-image>
+                <el-image :src="scope.row.icon_path" class="icon" style="height: 32px;"></el-image>
             </template>
         </el-table-column>
         <el-table-column label="工具名称" prop="tool_name">
