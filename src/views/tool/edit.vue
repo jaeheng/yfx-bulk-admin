@@ -112,9 +112,6 @@ import image from '@img/tool.svg'
 import BreadCrumb from "_c/BreadCrumb.vue";
 import {getToken} from "@/libs/storage";
 import api from '@/config/api'
-import icons from '@/assets/iconfont/iconfont.json'
-
-console.log(icons)
 
 export default {
     components: {
@@ -122,16 +119,13 @@ export default {
         editor
     },
     data() {
-        const iconFonts = icons.glyphs.map(item => {
-            return icons.css_prefix_text + item.font_class
-        })
         return {
             api,
             image,
             tool_key: '',
             data_type: '',
             icon_path: '',
-            badge: ['', ...iconFonts],
+            badge: ['', 'icon-new', 'icon-star', 'icon-tuijian'],
             form: {
                 is_show: 0,
                 min: 0,
