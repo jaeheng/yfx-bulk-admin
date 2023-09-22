@@ -65,7 +65,15 @@
                             </el-radio-group>
                         </el-form-item>
                         <el-form-item label="小图标颜色">
-                            <el-color-picker v-model="form.badge_color"></el-color-picker>
+                            <el-radio-group v-model="form.badge_color">
+                                <el-radio :label="item.class" v-for="item in colorPresets" :key="item.class">
+                                    <div class="ant-tag"
+                                         :style="{ background: item['background-color'], color: item.color }">{{
+                                            item.class
+                                        }}
+                                    </div>
+                                </el-radio>
+                            </el-radio-group>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="submit" :loading="submitting">保存</el-button>
@@ -112,6 +120,7 @@ import image from '@img/tool.svg'
 import BreadCrumb from "_c/BreadCrumb.vue";
 import {getToken} from "@/libs/storage";
 import api from '@/config/api'
+import {COLOR_PRESETS} from "@/config/app";
 
 export default {
     components: {
@@ -156,7 +165,8 @@ export default {
             submitting: false,
             ext: ['jpg', 'jpeg', 'png', 'svg'],
             size: 1, // MB
-            token: getToken()
+            token: getToken(),
+            colorPresets: COLOR_PRESETS
         }
     },
     methods: {

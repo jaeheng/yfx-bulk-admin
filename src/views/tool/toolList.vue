@@ -42,10 +42,14 @@
         </el-table-column>
         <el-table-column label="工具名称" prop="tool_name">
             <template #default="scope">
-                {{ scope.row.tool_name }}<i class="badge"
-                                            :style="{ color: scope.row.badge_color, fontSize: '28px' }">{{
-                    scope.row.badge
-                }}</i>
+                {{ scope.row.tool_name }}
+
+                <template v-if="colorPresets[scope.row.badge_color]">
+                    <i class="ant-tag"
+                       :style="{ color: colorPresets[scope.row.badge_color].color, background: colorPresets[scope.row.badge_color]['background-color'] }">{{
+                            scope.row.badge
+                        }}</i>
+                </template>
             </template>
         </el-table-column>
         <el-table-column label="工具key" prop="tool_key"></el-table-column>
@@ -82,8 +86,19 @@
 }
 </style>
 <script>
+import {COLOR_PRESETS} from "@/config/app";
+
 export default {
     props: ['data', 'platform'],
+    data() {
+        const colorPresets = {}
+        COLOR_PRESETS.map(item => {
+            colorPresets[item.class] = item
+        })
+        return {
+            colorPresets: colorPresets
+        }
+    },
     methods: {
         sortChange(row) {
             this.$util.post(this.api.toolSortChange, {id: row.id, sort: row.sort, platform: this.platform}, resp => {

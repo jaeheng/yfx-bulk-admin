@@ -67,3 +67,81 @@ export const MATRIX_TYPE = {
     counts: 'counts',
     normalized: 'normalized'
 }
+
+export const COLOR_PRESETS = [
+    {
+        "class": "processing",
+        "color": "#1677ff",
+        "background-color": "#e6f4ff"
+    },
+    {
+        "class": "success",
+        "color": "#52c41a",
+        "background-color": "#f6ffed"
+    },
+    {
+        "class": "error",
+        "color": "#ff4d4f",
+        "background-color": "#fff2f0"
+    },
+    {
+        "class": "warning",
+        "color": "#faad14",
+        "background-color": "#fffbe6"
+    },
+    {
+        "class": "magenta",
+        "color": "#c41d7f",
+        "background-color": "#fff0f6"
+    },
+    {
+        "class": "red",
+        "color": "#cf1322",
+        "background-color": "#fff1f0"
+    },
+    {
+        "class": "volcano",
+        "color": "#d4380d",
+        "background-color": "#fff2e8"
+    },
+    {
+        "class": "orange",
+        "color": "#d46b08",
+        "background-color": "#fff7e6"
+    },
+    {
+        "class": "gold",
+        "color": "#d48806",
+        "background-color": "#fffbe6"
+    },
+    {
+        "class": "lime",
+        "color": "#7cb305",
+        "background-color": "#fcffe6"
+    },
+    {
+        "class": "green",
+        "color": "#389e0d",
+        "background-color": "#f6ffed"
+    },
+    {
+        "class": "cyan",
+        "color": "#08979c",
+        "background-color": "#e6fffb"
+    },
+    {
+        "class": "blue",
+        "color": "#0958d9",
+        "background-color": "#e6f4ff"
+    },
+    {
+        "class": "geekblue",
+        "color": "#1d39c4",
+        "background-color": "#f0f5ff"
+    },
+    {
+        "class": "purple",
+        "color": "#531dab",
+        "background-color": "#f9f0ff"
+    }
+]
