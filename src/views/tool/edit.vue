@@ -60,8 +60,7 @@
                             <el-input v-model="form.badge" placeholder="最多支持2个字"></el-input>
                             <el-radio-group v-model="form.badge">
                                 <el-radio :label="item" v-for="item in badge" :key="item">
-                                    <i class="iconfont" :class="item" style="font-size: 28px;" v-if="item"></i>
-                                    <span v-else>无</span>
+                                    {{ item || '无' }}
                                 </el-radio>
                             </el-radio-group>
                         </el-form-item>
