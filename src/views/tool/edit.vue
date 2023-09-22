@@ -131,7 +131,7 @@ export default {
                 min: 0,
                 max: 0,
                 badge: '',
-                badge_color: '',
+                badge_color: '#F52C2C',
                 is_species_related: 'F',
                 tool_name: '',
                 desc: '',
