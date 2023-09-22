@@ -57,6 +57,7 @@
                             <span class="form-item-tip">0为不限制</span>
                         </el-form-item>
                         <el-form-item label="小图标提示">
+                            <el-input v-model="form.badge" placeholder="最多支持2个字"></el-input>
                             <el-radio-group v-model="form.badge">
                                 <el-radio :label="item" v-for="item in badge" :key="item">
                                     <i class="iconfont" :class="item" style="font-size: 28px;" v-if="item"></i>
@@ -125,7 +126,7 @@ export default {
             tool_key: '',
             data_type: '',
             icon_path: '',
-            badge: ['', 'icon-new', 'icon-star', 'icon-tuijian'],
+            badge: ['', '新', '热门', '推荐', '免费', '付费', 'Pro', '优惠', 'AI'],
             form: {
                 is_show: 0,
                 min: 0,
