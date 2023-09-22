@@ -42,8 +42,10 @@
         </el-table-column>
         <el-table-column label="工具名称" prop="tool_name">
             <template #default="scope">
-                {{ scope.row.tool_name }}<i class="iconfont" :class="scope.row.badge"
-                                            :style="{ color: scope.row.badge_color, fontSize: '28px' }"></i>
+                {{ scope.row.tool_name }}<i class="badge"
+                                            :style="{ color: scope.row.badge_color, fontSize: '28px' }">{{
+                    scope.row.badge
+                }}</i>
             </template>
         </el-table-column>
         <el-table-column label="工具key" prop="tool_key"></el-table-column>
