@@ -46,13 +46,13 @@
                         </el-col>
                         <el-col :span="8">
                             <div class="entry-item">
-                                <i class="iconfont icon-shenqing"></i>
+                                <i class="iconfont icon-free"></i>
                                 <span>审批试用项目</span>
                             </div>
                         </el-col>
                         <el-col :span="8">
                             <div class="entry-item" @click="$router.push('/tool/sc')">
-                                <i class="iconfont icon-sc"></i>
+                                <i class="iconfont icon-tools"></i>
                                 <span>工具列表</span>
                             </div>
                         </el-col>

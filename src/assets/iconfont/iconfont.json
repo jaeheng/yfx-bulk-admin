@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5755592",
+      "name": "工具3",
+      "font_class": "tools",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "27367632",
+      "name": "二维码角标",
+      "font_class": "qrcode_badge",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "18640581",
+      "name": "开始任务",
+      "font_class": "start",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
       "icon_id": "18938393",
       "name": "表头设置",
       "font_class": "setting2",
