@@ -1,8 +1,6 @@
 <template>
   <span>
-    <el-button size="small" circle plain @click="visible = true"
-      ><i class="iconfont icon-more"></i
-    ></el-button>
+    <el-button size="small" type="primary" round @click="visible = true">更多</el-button>
     <el-dialog append-to-body width="1300px" v-model="visible">
       <el-descriptions border :column="1">
         <el-descriptions-item label="路径">
