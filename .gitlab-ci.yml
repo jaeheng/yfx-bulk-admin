@@ -1,18 +1,31 @@
 stages:
-  - test
+    - test
+    - deploy_chengdu
 
 default:
-  before_script:
-    - source ~/.bashrc
+    before_script:
+        - source ~/.bashrc
 
 test:
-  stage: test
-  tags:
-    - sjz001
-  script:
-    - yarn
-    - yarn build
-    - /usr/bin/cp -r dist/* /home/yfx/YFX_BULK/deploy/admin/
-    - echo Deploy Success!
-  only:
-    - sjz001
+    stage: test
+    tags:
+        - sjz001
+    script:
+        - yarn
+        - yarn build
+        - /usr/bin/cp -r dist/* /home/yfx/YFX_BULK/deploy/admin/
+        - echo Deploy Success!
+    only:
+        - sjz001
+
+deploy_chengdu:
+    stage: deploy_chengdu
+    tags:
+        - chengdu
+    script:
+        - yarn
+        - yarn build
+        - /usr/bin/cp -r dist/* /home/yfx/YFX_BULK/deploy/admin/
+        - echo Deploy Success!
+    only:
+        - chengdu
