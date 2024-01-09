@@ -25,7 +25,7 @@ deploy_chengdu:
     script:
         - yarn
         - yarn build
-        - /usr/bin/cp -r dist/* /home/yfx/YFX_BULK/deploy/admin/
+        - /usr/bin/cp -r dist/* /SC1/YFX_BULK/deploy/admin/
         - echo Deploy Success!
     only:
         - chengdu
