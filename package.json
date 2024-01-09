@@ -1,32 +1,33 @@
 {
-  "name": "eanalyse",
-  "version": "1.0.2",
-  "scripts": {
-    "serve": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy:sjz001": "git checkout sjz001 && git merge master && git push origin sjz001 && git checkout master && echo success"
-  },
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.0.10",
-    "@wangeditor/editor": "^5.1.22",
-    "@wangeditor/editor-for-vue": "^5.1.10",
-    "axios": "^0.25.0",
-    "element-plus": "^2.0.2",
-    "js-cookie": "^3.0.1",
-    "lodash": "^4.17.21",
-    "nprogress": "^0.2.0",
-    "plotly.js": "^2.9.0",
-    "qs": "^6.10.3",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "prettier": "^3.0.3",
-    "sass": "^1.58.0",
-    "vite": "^4.0.4"
-  },
-  "private": true
+    "name": "eanalyse",
+    "version": "1.0.2",
+    "scripts": {
+        "serve": "vite --host",
+        "build": "vite build",
+        "preview": "vite preview",
+        "deploy:sjz001": "git checkout sjz001 && git merge master && git push origin sjz001 && git checkout master && echo success",
+        "deploy:cd": "git checkout chengdu && git merge master && git push origin chengdu && git checkout master && echo success"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.0.10",
+        "@wangeditor/editor": "^5.1.22",
+        "@wangeditor/editor-for-vue": "^5.1.10",
+        "axios": "^0.25.0",
+        "element-plus": "^2.0.2",
+        "js-cookie": "^3.0.1",
+        "lodash": "^4.17.21",
+        "nprogress": "^0.2.0",
+        "plotly.js": "^2.9.0",
+        "qs": "^6.10.3",
+        "vue": "^3.2.25",
+        "vue-router": "^4.0.12",
+        "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^4.0.0",
+        "prettier": "^3.0.3",
+        "sass": "^1.58.0",
+        "vite": "^4.0.4"
+    },
+    "private": true
 }
