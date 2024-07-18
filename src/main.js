@@ -4,11 +4,11 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import util from './libs/util'
 import api from './config/api'
-import './assets/style/element.scss'
+import 'element-plus/dist/index.css'
 import './assets/style/app.scss'
 import appConfig from './config/app'
 import store from './store'
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 /* eslint-disable no-new */
 const app = createApp(App)

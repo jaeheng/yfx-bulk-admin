@@ -2,8 +2,8 @@
     <div class="layout">
         <div class="menu">
             <router-link to="/dashboard" class="logo">
-                <img src="@img/logo-white.png" alt="logo">
-                后台管理系统
+                <img src="@img/logo.svg" alt="logo" />
+                BULK后台管理系统
             </router-link>
 
             <div class="el-menu-primary">
@@ -20,9 +20,9 @@
             </div>
 
             <el-dropdown trigger="click" class="dropdown" @command="handleCommand">
-        <span class="el-dropdown-link">
-          {{ userInfo.username }} <i class="iconfont icon-down"></i>
-        </span>
+                <span class="el-dropdown-link">
+                    {{ userInfo.username }} <i class="iconfont icon-down"></i>
+                </span>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
@@ -46,7 +46,7 @@
 }
 
 .menu {
-    background: linear-gradient(90deg, #3672F6, #0090ff, rgba(21, 98, 248, 0.9));
+    background: linear-gradient(90deg, #3672f6, #0090ff, rgba(21, 98, 248, 0.9));
     height: 54px;
     line-height: 54px;
     padding: 0 25px;
@@ -66,7 +66,7 @@
         justify-content: center;
         align-items: center;
         font-size: 14px;
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.8);
 
         img {
             height: 80%;
@@ -97,7 +97,7 @@
         padding: 0 10px;
         margin: 0 5px;
         font-size: 15px;
-        color: hsla(0, 0%, 100%, .7);
+        color: hsla(0, 0%, 100%, 0.7);
 
         &:after {
             content: '';
@@ -108,7 +108,7 @@
             position: absolute;
             left: 50%;
             bottom: 0;
-            transition: all .2s;
+            transition: all 0.2s;
             border-radius: 3px;
         }
 
@@ -125,7 +125,7 @@
 }
 </style>
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     data() {
@@ -151,7 +151,7 @@ export default {
             }
         },
         logout() {
-            this.$util.get(this.api.logout, {}, resp => {
+            this.$util.get(this.api.logout, {}, (resp) => {
                 this.clearUserInfo()
                 this.$router.push('/')
             })

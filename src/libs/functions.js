@@ -1,8 +1,8 @@
 import Nprogress from 'nprogress'
 import axios from 'axios'
 import qs from 'qs'
-import {getToken, setToken} from './storage'
-import _ from 'lodash'
+import { getToken, setToken } from './storage'
+import _ from 'lodash-es'
 import { ElMessage } from 'element-plus'
 
 /**
@@ -11,7 +11,7 @@ import { ElMessage } from 'element-plus'
  * @returns string|boolean
  * return false表示filename参数没有后缀
  */
-export const getSuffix = filename => {
+export const getSuffix = (filename) => {
   let index = filename.lastIndexOf('.')
   return index === -1 ? false : filename.substr(index + 1)
 }
@@ -54,31 +54,33 @@ export const http = (type, url, data, success, error) => {
   } else if (type === 'get') {
     config.params = data
   }
-  axios(config).then((response) => {
-    let data = response.data.content
-    let code = response.data.code
-    let message = response.data.message
-    // 请求返回正常数据
-    if (code === 200) {
-      typeof success === 'function' && success(data, message)
-    } else if (code === 401) {
-      setToken('')
-      setTimeout(() => {
-        // window.location.href = '/#/'
-        window.location.href = '/#/?redirect=' + window.location.hash.substring(1)
-      }, 300)
-    } else if (code === 402) {
-      window.location.href = '/#/forbidden'
-    } else {
-      ElMessage.error(message)
-      typeof error === 'function' && error(message)
-    }
-    Nprogress.done()
-  }).catch(function (err) {
-    ElMessage.error(err.message)
-    typeof error === 'function' && error(err.message)
-    Nprogress.done()
-  })
+  axios(config)
+    .then((response) => {
+      let data = response.data.content
+      let code = response.data.code
+      let message = response.data.message
+      // 请求返回正常数据
+      if (code === 200) {
+        typeof success === 'function' && success(data, message)
+      } else if (code === 401) {
+        setToken('')
+        setTimeout(() => {
+          // window.location.href = '/#/'
+          window.location.href = '/#/?redirect=' + window.location.hash.substring(1)
+        }, 300)
+      } else if (code === 402) {
+        window.location.href = '/#/forbidden'
+      } else {
+        ElMessage.error(message)
+        typeof error === 'function' && error(message)
+      }
+      Nprogress.done()
+    })
+    .catch(function (err) {
+      ElMessage.error(err.message)
+      typeof error === 'function' && error(err.message)
+      Nprogress.done()
+    })
 }
 
 /**
@@ -109,7 +111,9 @@ export const post = (url, params, success, error) => {
  * @returns {*|boolean}
  */
 export const checkHex = (tester) => {
-  return _.isString(tester) && (tester.match(/^#[0-9a-fA-F]{6}$/) || tester.match(/^#[0-9a-fA-F]{3}$/))
+  return (
+    _.isString(tester) && (tester.match(/^#[0-9a-fA-F]{6}$/) || tester.match(/^#[0-9a-fA-F]{3}$/))
+  )
 }
 
 /**

@@ -1,14 +1,15 @@
 <template>
   <el-config-provider :locale="locale">
-    <router-view/>
+    <router-view />
   </el-config-provider>
 </template>
 
 <script>
-import locale from 'element-plus/lib/locale/lang/zh-cn'
+import locale from 'element-plus/es/locale/lang/zh-cn'
+
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       locale
     }
