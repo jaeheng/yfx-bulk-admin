@@ -67,6 +67,14 @@ a {
     }
 }
 
+.drawer-box {
+    padding: 30px;
+
+    .el-form-item__label {
+        font-weight: bold;
+    }
+}
+
 .el-pagination {
     margin-top: 15px;
 }
