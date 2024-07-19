@@ -7,7 +7,7 @@
         </page-header>
         <div class="container">
             <el-card style="margin: 15px 0" shadow="hover" header="条件搜索">
-                <el-form label-position="top">
+                <el-form label-width="120px" label-position="left">
                     <el-form-item label="所属公司:">
                         <el-radio-group v-model="form.company_id">
                             <el-radio :value="0">所有</el-radio>

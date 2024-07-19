@@ -11,7 +11,7 @@
         </el-breadcrumb>
         <h3 class="title">{{ title }}</h3>
         <p class="description">{{ description }}</p>
-        <img :src="image" v-if="image" class="image" />
+        <img :src="image" v-if="image" class="image" :alt="title" />
         <slot></slot>
     </div>
 </template>
