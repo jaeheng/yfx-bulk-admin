@@ -24,88 +24,66 @@ export default {
         {
             path: '/projects',
             name: 'projects',
-            component: () => import('_v/projects/index.vue'),
-            redirect: '/projects/list',
-            children: [
-                {
-                    path: '/projects/list',
-                    name: 'projectsList',
-                    component: () => import('_v/projects/list.vue'),
-                    meta: {
+            component: () => import('_v/projects/list.vue'),
+            meta: {
+                title: '项目列表'
+            }
+        },
+        {
+            path: '/projects/create',
+            name: 'projectsCreate',
+            component: () => import('_v/projects/create.vue'),
+            meta: {
+                title: '创建项目',
+                bread: [
+                    {
+                        name: 'projects',
                         title: '项目列表'
                     }
-                },
-                {
-                    path: '/projects/create',
-                    name: 'projectsCreate',
-                    component: () => import('_v/projects/create.vue'),
-                    meta: {
-                        title: '创建项目',
-                        bread: [
-                            {
-                                name: 'projects',
-                                title: '项目列表'
-                            }
-                        ]
+                ]
+            }
+        },
+        {
+            path: '/projects/edit/:id',
+            name: 'projectsEdit',
+            component: () => import('_v/projects/edit.vue'),
+            meta: {
+                title: '编辑项目',
+                bread: [
+                    {
+                        name: 'projects',
+                        title: '项目列表'
                     }
-                },
-                {
-                    path: '/projects/edit/:id',
-                    name: 'projectsEdit',
-                    component: () => import('_v/projects/edit.vue'),
-                    meta: {
-                        title: '编辑项目',
-                        bread: [
-                            {
-                                name: 'projects',
-                                title: '项目列表'
-                            }
-                        ]
+                ]
+            }
+        },
+        {
+            path: '/projects/field/:id',
+            name: 'projectsField',
+            component: () => import('_v/projects/field.vue'),
+            meta: {
+                title: '属性表字段',
+                bread: [
+                    {
+                        name: 'projects',
+                        title: '项目列表'
                     }
-                },
-                {
-                    path: '/projects/field/:id',
-                    name: 'projectsField',
-                    component: () => import('_v/projects/field.vue'),
-                    meta: {
-                        title: '属性表字段',
-                        bread: [
-                            {
-                                name: 'projects',
-                                title: '项目列表'
-                            }
-                        ]
+                ]
+            }
+        },
+        {
+            path: '/projects/import/:id',
+            name: 'projectsImport',
+            component: () => import('_v/projects/import.vue'),
+            meta: {
+                title: '导入项目数据',
+                bread: [
+                    {
+                        name: 'projects',
+                        title: '项目列表'
                     }
-                },
-                {
-                    path: '/projects/deleted',
-                    name: 'projectsDeleted',
-                    component: () => import('_v/projects/deleted.vue'),
-                    meta: {
-                        title: '已删除项目',
-                        bread: [
-                            {
-                                name: 'projects',
-                                title: '项目列表'
-                            }
-                        ]
-                    }
-                },
-                {
-                    path: '/projects/import/:id',
-                    name: 'projectsImport',
-                    component: () => import('_v/projects/import.vue'),
-                    meta: {
-                        title: '导入项目数据',
-                        bread: [
-                            {
-                                name: 'projects',
-                                title: '项目列表'
-                            }
-                        ]
-                    }
-                }
-            ]
+                ]
+            }
         },
         {
             path: '/task',
