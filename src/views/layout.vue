@@ -12,7 +12,6 @@
                     <router-link to="/company">公司管理</router-link>
                     <router-link to="/projects">项目管理</router-link>
                     <router-link to="/task">任务管理</router-link>
-                    <router-link to="/sets">集合管理</router-link>
                     <router-link to="/tool">工具管理</router-link>
                     <router-link to="/statistic">统计中心</router-link>
                     <router-link to="/system">系统管理</router-link>
