@@ -26,8 +26,8 @@ export default {
         return {
             MATRIX_TYPE,
             form: {
-                counts: '/Users/zhangjiawei/YFX_BULK/c.xls',
-                normalized: '/Users/zhangjiawei/YFX_BULK/n.xls'
+                counts: '',
+                normalized: ''
             },
             rules: {
                 counts: [{ required: true, message: '请输入counts矩阵路径', trigger: 'blur' }]
