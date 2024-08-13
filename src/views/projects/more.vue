@@ -50,6 +50,9 @@
                         <el-descriptions-item label="删除时间">{{
                             data.deleted_at || '-'
                         }}</el-descriptions-item>
+                        <el-descriptions-item label="data_path">{{
+                            data.data_path || '-'
+                        }}</el-descriptions-item>
                     </el-descriptions>
                 </el-col>
                 <el-col :span="10">
