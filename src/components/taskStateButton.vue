@@ -5,9 +5,11 @@
             <div style="margin-bottom: 15px">
                 <el-button @click="fetchData" :loading="loading">刷新</el-button>
             </div>
-            <pre style="padding: 15px; background: #eee; line-height: 2" v-loading="loading">{{
-                output
-            }}</pre>
+            <pre
+                style="padding: 15px; background: #eee; line-height: 2; white-space: pre-wrap"
+                v-loading="loading"
+                >{{ output }}</pre
+            >
         </el-dialog>
     </span>
 </template>
