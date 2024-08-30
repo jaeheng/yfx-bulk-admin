@@ -137,6 +137,11 @@
                         <span v-if="scope.row.deleted_at">(已删除)</span>
                     </template>
                 </el-table-column>
+                <el-table-column label="运行状态" width="100">
+                    <template #default="scope">
+                        <task-state-button :id="scope.row.id" />
+                    </template>
+                </el-table-column>
                 <el-table-column label="操作" width="100">
                     <template #default="scope">
                         <more :data="scope.row"></more>
@@ -175,9 +180,11 @@ import { PAGE_LAYOUT, TASK_STATE } from '@/config/app'
 import ImportState from '_c/ImportState.vue'
 import { taskList } from '@/request/modules/task'
 import { getToolList } from '@/request/modules/tool'
+import TaskStateButton from '_c/taskStateButton.vue'
 
 export default {
     components: {
+        TaskStateButton,
         PageHeader,
         more,
         ImportState

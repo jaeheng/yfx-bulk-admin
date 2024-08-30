@@ -27,3 +27,10 @@ export const taskQueueFailed = (params) => {
         params
     })
 }
+export const taskState = (id) => {
+    return request.get('/task/state', {
+        params: {
+            id
+        }
+    })
+}
