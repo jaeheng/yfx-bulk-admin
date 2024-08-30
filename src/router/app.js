@@ -89,9 +89,36 @@ export default {
             path: '/task',
             name: 'task',
             component: () => import('_v/task/index.vue'),
+            redirect: '/task/list',
             meta: {
                 title: '任务列表'
-            }
+            },
+            children: [
+                {
+                    path: 'list',
+                    name: 'taskList',
+                    component: () => import('_v/task/list.vue'),
+                    meta: {
+                        title: '任务列表'
+                    }
+                },
+                {
+                    path: 'queue',
+                    name: 'taskQueue',
+                    component: () => import('_v/task/queue.vue'),
+                    meta: {
+                        title: '任务队列'
+                    }
+                },
+                {
+                    path: 'queue-failed',
+                    name: 'taskQueueFailed',
+                    component: () => import('_v/task/queueFailed.vue'),
+                    meta: {
+                        title: '失败队列'
+                    }
+                }
+            ]
         },
         {
             path: '/system',

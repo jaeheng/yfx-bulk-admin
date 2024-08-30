@@ -17,3 +17,13 @@ export const taskList = (params) => {
         params
     })
 }
+export const taskQueue = (params) => {
+    return request.get('/task/queue', {
+        params
+    })
+}
+export const taskQueueFailed = (params) => {
+    return request.get('/task/queue-failed', {
+        params
+    })
+}
