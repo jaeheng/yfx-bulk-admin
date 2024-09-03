@@ -24,18 +24,17 @@ html, body, #app, .layout {
 }
 
 .el-aside .el-menu {
-    height: 100%;
-    position: fixed;
-    width: 220px;
-
-    .is-active {
-        border-right: 2px solid;
-        background: rgb(127 196 255 / 24%);
+    .el-menu-item.is-active {
+        background: #000;
     }
 
-    .el-icon {
-        font-size: 14px;
+    .el-sub-menu .el-menu {
+        background: #32394b;
     }
+}
+
+.el-menu--popup {
+    background: #32394b;
 }
 
 a {
@@ -125,10 +124,6 @@ a {
             color: #5278f8;
         }
     }
-}
-
-.el-aside .el-menu .iconfont {
-    font-size: 14px;
 }
 
 .el-menu-item [class^=iconfont] {
