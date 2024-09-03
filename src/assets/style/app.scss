@@ -19,6 +19,10 @@ html, body, #app, .layout {
     flex: 1;
 }
 
+.border-less {
+    border: none;
+}
+
 .el-aside .el-menu {
     height: 100%;
     position: fixed;

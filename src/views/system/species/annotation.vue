@@ -6,7 +6,7 @@
         </el-alert>
         <div class="category-list" v-loading="loading">
             <el-card
-                shadow="hover"
+                shadow="never"
                 :body-style="{ padding: '0px' }"
                 class="category-item"
                 v-for="item in annotationLibraryOptions"
@@ -31,7 +31,7 @@
                 </div>
             </el-card>
             <el-card
-                shadow="hover"
+                shadow="never"
                 :body-style="{ padding: '0px' }"
                 class="category-item"
                 style="padding-bottom: 0"

@@ -1,7 +1,7 @@
 <template>
     <div class="species">
         <page-header description="对物种信息、注释库信息进行统一管理" has-bread :image="image" />
-        <el-card shadow="hover">
+        <el-card shadow="never">
             <el-form inline>
                 <el-form-item style="margin-bottom: 0">
                     <el-button type="primary" @click="$refs.create.show()"
@@ -13,7 +13,7 @@
         <el-empty description="暂无物种数据" v-if="list.length === 0 && !loading"></el-empty>
         <el-row type="flex" :gutter="15" class="category-list" v-loading="loading">
             <el-col v-for="item in list" :key="item.id" :span="6">
-                <el-card shadow="hover" :body-style="{ padding: '0px' }" class="category-item">
+                <el-card shadow="never" :body-style="{ padding: '0px' }" class="category-item">
                     <div style="padding: 14px">
                         <h3>{{ item.alias }} （{{ item.name }}）</h3>
                         <div class="info">

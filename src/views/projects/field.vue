@@ -15,7 +15,7 @@
             >
             的属性表字段
         </p>
-        <el-card header="字段列表" style="margin-top: 15px" shadow="hover">
+        <el-card header="字段列表" style="margin-top: 15px" shadow="never">
             <el-table :data="fieldList">
                 <el-table-column prop="id" label="ID" width="80"></el-table-column>
                 <el-table-column

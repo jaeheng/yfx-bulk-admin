@@ -2,7 +2,7 @@
     <div class="projects-edit">
         <div class="container">
             <BreadCrumb />
-            <el-card shadow="hover" header="修改项目">
+            <el-card shadow="never" header="修改项目">
                 <project-form ref="projectForm" @submit="submitHandle" v-loading="loading" />
             </el-card>
         </div>

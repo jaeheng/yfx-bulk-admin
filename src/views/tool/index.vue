@@ -2,7 +2,7 @@
     <div class="tool">
         <page-header description="新建工具需要手动操作,请联系开发人员" has-bread :image="image" />
         <div class="container">
-            <el-card header="筛选条件" style="margin-bottom: 10px" shadow="hover">
+            <el-card header="筛选条件" style="margin-bottom: 10px" shadow="never">
                 <el-form label-position="left" label-width="120px">
                     <el-form-item label="状态">
                         <el-radio-group v-model="form.state" @change="filterChange">
@@ -12,7 +12,7 @@
                     </el-form-item>
                 </el-form>
             </el-card>
-            <el-card :header="'工具列表 (共: ' + total + ' 个工具)'" class="tool" shadow="hover">
+            <el-card :header="'工具列表 (共: ' + total + ' 个工具)'" class="tool" shadow="never">
                 <toolList
                     :data="toolListFilter"
                     :platform="platform"

@@ -6,7 +6,7 @@
             </router-link>
         </page-header>
         <div class="container">
-            <el-card style="margin: 15px 0" shadow="hover" header="条件搜索">
+            <el-card style="margin: 15px 0" shadow="never" header="条件搜索">
                 <el-form label-width="120px" label-position="left">
                     <el-form-item label="所属公司:">
                         <el-radio-group v-model="form.company_id">
@@ -29,7 +29,7 @@
                     </el-form-item>
                 </el-form>
             </el-card>
-            <el-card header="项目列表" shadow="hover">
+            <el-card header="项目列表" shadow="never">
                 <el-table :data="tableData" v-loading="loading" row-key="id">
                     <el-table-column label="ID" prop="id" width="120" />
                     <el-table-column label="YFX编号" prop="yfx_id" />
@@ -37,6 +37,7 @@
                     <el-table-column label="所属公司" prop="company.name" />
                     <el-table-column label="任务数" prop="task_count" width="100" />
                     <el-table-column label="样本数" prop="sample_count" width="100" />
+                    <el-table-column label="存储空间" prop="size" width="100" />
                     <el-table-column label="创建时间" prop="created_at" width="220" />
                     <el-table-column label="付费情况">
                         <template #default="scope">

@@ -2,7 +2,12 @@
     <div class="dashboard">
         <el-row :gutter="15">
             <el-col :span="12">
-                <el-card shadow="hover" v-loading="loading" style="height: 220px">
+                <el-card
+                    shadow="never"
+                    v-loading="loading"
+                    class="border-less"
+                    style="height: 220px"
+                >
                     <el-row class="static-item">
                         <el-col :span="8">
                             <h3>总项目数</h3>
@@ -20,17 +25,16 @@
                             <h3>总样本数</h3>
                             <p class="num">{{ total_sample_count }}</p>
                         </el-col>
-                        <el-col :span="8">
-                            <h3>外部端口状态</h3>
-                            <i style="color: #ff461f;" class="static-icon iconfont icon-warning" title="存在异常"
-                               v-if="sld"></i>
-                            <i style="color: #13ce66;" class="static-icon iconfont icon-success" v-else></i>
-                        </el-col>
                     </el-row>
                 </el-card>
             </el-col>
             <el-col :span="12">
-                <el-card shadow="hover" v-loading="loading" style="height: 220px">
+                <el-card
+                    shadow="never"
+                    v-loading="loading"
+                    class="border-less"
+                    style="height: 220px"
+                >
                     <el-row class="entry-items" :gutter="20">
                         <el-col :span="8">
                             <div class="entry-item" @click="$router.push('/projects/create')">
@@ -67,41 +71,52 @@
             </el-col>
         </el-row>
 
-        <el-row :gutter="15" style="margin-top: 15px;">
+        <el-row :gutter="15" style="margin-top: 15px">
             <el-col :span="12">
-                <el-card shadow="hover">
+                <el-card shadow="never" class="border-less">
                     <template #header>
                         {{ month }}月份每天的任务情况
-                        <el-date-picker v-model="month"
-                                        type="month"
-                                        format="YYYY/MM"
-                                        value-format="YYYYMM"
-                                        size="small"
-                                        style="float: right"
-                                        @change="dateChange('monthChart')"
+                        <el-date-picker
+                            v-model="month"
+                            type="month"
+                            format="YYYY/MM"
+                            value-format="YYYYMM"
+                            size="small"
+                            style="float: right"
+                            @change="dateChange('monthChart')"
                         ></el-date-picker>
                     </template>
 
-                    <TaskState ref="monthChart" :type="30" :date="month" :title='`${month}`'></TaskState>
+                    <TaskState
+                        ref="monthChart"
+                        :type="30"
+                        :date="month"
+                        :title="`${month}`"
+                    ></TaskState>
                 </el-card>
-                <ToolState style="margin-top: 15px;" :chart-height="500"/>
+                <ToolState style="margin-top: 15px" :chart-height="500" />
             </el-col>
             <el-col :span="12">
-                <el-card shadow="hover">
+                <el-card shadow="never" class="border-less">
                     <template #header>
                         {{ year }}年样本数统计情况
-                        <el-date-picker v-model="yearSample"
-                                        type="year"
-                                        format="YYYY"
-                                        value-format="YYYY"
-                                        size="small"
-                                        style="float: right"
-                                        @change="dateChange('yearSampleChart')"
+                        <el-date-picker
+                            v-model="yearSample"
+                            type="year"
+                            format="YYYY"
+                            value-format="YYYY"
+                            size="small"
+                            style="float: right"
+                            @change="dateChange('yearSampleChart')"
                         ></el-date-picker>
                     </template>
-                    <SampleState ref="yearSampleChart" :year="yearSample" :title='`${yearSample}`'></SampleState>
+                    <SampleState
+                        ref="yearSampleChart"
+                        :year="yearSample"
+                        :title="`${yearSample}`"
+                    ></SampleState>
                 </el-card>
-                <ErrorTaskList style="margin-top: 15px;"/>
+                <ErrorTaskList style="margin-top: 15px" />
             </el-col>
         </el-row>
     </div>
@@ -124,7 +139,7 @@
     cursor: pointer;
 
     &:hover {
-        opacity: .9;
+        opacity: 0.9;
         color: #1d42ab;
     }
 
@@ -139,6 +154,7 @@ import ToolState from '_c/ToolState.vue'
 import TaskState from '_c/TaskState.vue'
 import SampleState from '_c/SampleState.vue'
 import ErrorTaskList from '_c/ErrorTaskList.vue'
+import { indexStatistic } from '@/request/modules/statistic'
 
 export default {
     components: {
@@ -162,7 +178,6 @@ export default {
             starting: 0,
             total_size: 0,
             writing: 0,
-            sld: 0,
             total_sample_count: 0,
             loading: false,
             month: `${date.getFullYear()}${month}`,
@@ -174,21 +189,22 @@ export default {
     methods: {
         getData() {
             this.loading = true
-            this.$util.get(this.api.index, {}, resp => {
-                this.project = resp.project
-                this.task = resp.task
-                this.complete = resp.complete
-                this.fail = resp.fail
-                this.not_started = resp.not_started
-                this.starting = resp.starting
-                this.total_size = resp.total_size
-                this.writing = resp.writing
-                this.sld = resp.sld
-                this.total_sample_count = resp.total_sample_count
-                this.loading = false
-            }, () => {
-                this.loading = false
-            })
+            indexStatistic()
+                .then((resp) => {
+                    this.project = resp.project
+                    this.task = resp.task
+                    this.complete = resp.complete
+                    this.fail = resp.fail
+                    this.not_started = resp.not_started
+                    this.starting = resp.starting
+                    this.total_size = resp.total_size
+                    this.writing = resp.writing
+                    this.total_sample_count = resp.total_sample_count
+                    this.loading = false
+                })
+                .catch(() => {
+                    this.loading = false
+                })
         },
         dateChange(ref) {
             this.$refs[ref].fetchData()

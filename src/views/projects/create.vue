@@ -2,7 +2,7 @@
     <div class="projects-create">
         <div class="container">
             <BreadCrumb />
-            <el-card shadow="hover" header="创建项目">
+            <el-card shadow="never" header="创建项目">
                 <project-form ref="projectForm" @submit="submitHandle" />
             </el-card>
         </div>
