@@ -1,36 +1,58 @@
 <template>
-    <el-container class="projects">
-        <el-aside width="220px">
-            <el-menu
-                :default-active="$route.fullPath"
-                class="el-menu-vertical-demo"
-                :collapse="isCollapse"
-                :router="true"
-            >
-                <el-menu-item index="/sets/public-gene-set">
-                    <el-icon><i class="el-icon iconfont icon-gene"></i></el-icon>
-                    <template #title>公共基因集</template>
-                </el-menu-item>
-            </el-menu>
-        </el-aside>
-        <el-container>
-            <el-main>
-                <router-view></router-view>
-            </el-main>
-        </el-container>
-    </el-container>
+    <el-table :data="list">
+        <el-table-column label="ID" property="id" />
+        <el-table-column label="名称" property="name" />
+        <el-table-column label="项目编号" property="project.project" />
+        <el-table-column label="创建时间" property="created_at" />
+        <el-table-column label="基因数" property="total" />
+        <el-table-column label="remark" property="remark" />
+    </el-table>
+
+    <el-pagination
+        background
+        :layout="PAGE_LAYOUT"
+        :total="total"
+        :page-size="perPage"
+        v-model:currentPage="page"
+        @current-change="currentChange"
+    >
+    </el-pagination>
 </template>
-<script setup>
-import {User} from "@element-plus/icons-vue";
-</script>
 <script>
-import {mapGetters} from "vuex";
+import { geneSetList } from '@/request/modules/geneSet'
+import { PAGE_LAYOUT } from '@/config/app'
 
 export default {
-    computed: {
-        ...mapGetters({
-            isCollapse: 'system/menuCollapse'
-        })
+    data() {
+        return {
+            PAGE_LAYOUT,
+            page: 1,
+            total: 0,
+            keyword: '',
+            project_id: '',
+            list: [],
+            perPage: 15
+        }
+    },
+    methods: {
+        currentChange(page) {
+            this.page = page
+            this.fetchData()
+        },
+        fetchData() {
+            geneSetList({
+                page: this.page,
+                keyword: this.keyword,
+                project_id: this.project_id
+            }).then(({ total, list, perPage }) => {
+                this.perPage = perPage
+                this.list = list
+                this.total = total
+            })
+        }
+    },
+    mounted() {
+        this.fetchData()
     }
 }
 </script>

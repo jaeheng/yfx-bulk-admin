@@ -15,6 +15,7 @@
                     style="border-right: 0"
                     text-color="#fff"
                     active-text-color="#fff"
+                    unique-opened
                     router
                 >
                     <template v-for="(v, index) in MainMenus" :key="v.path">

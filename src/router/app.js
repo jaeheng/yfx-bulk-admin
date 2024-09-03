@@ -12,24 +12,6 @@ export const MainMenus = [
         }
     },
     {
-        path: '/company',
-        component: () => import('_v/layout.vue'),
-        meta: {
-            title: '公司管理',
-            icon: 'icon-company'
-        },
-        children: [
-            {
-                path: '/company',
-                name: 'company',
-                component: () => import('_v/company/index.vue'),
-                meta: {
-                    title: '公司列表'
-                }
-            }
-        ]
-    },
-    {
         path: '/projects',
         component: () => import('_v/layout.vue'),
         meta: {
@@ -114,6 +96,24 @@ export const MainMenus = [
         ]
     },
     {
+        path: '/company',
+        component: () => import('_v/layout.vue'),
+        meta: {
+            title: '公司管理',
+            icon: 'icon-company'
+        },
+        children: [
+            {
+                path: '/company',
+                name: 'company',
+                component: () => import('_v/company/index.vue'),
+                meta: {
+                    title: '公司列表'
+                }
+            }
+        ]
+    },
+    {
         path: '/system',
         component: () => import('_v/layout.vue'),
         meta: {
@@ -159,16 +159,16 @@ export const MainMenus = [
         path: '/sets',
         component: () => import('_v/layout.vue'),
         meta: {
-            title: '集合配置',
+            title: '基因集管理',
             icon: 'icon-modular'
         },
         children: [
             {
                 path: '/sets/public',
                 name: 'publicGeneSet',
-                component: () => import('_v/sets/geneSetCategory/index.vue'),
+                component: () => import('_v/sets/index.vue'),
                 meta: {
-                    title: '公共基因集配置'
+                    title: '基因集列表'
                 }
             }
         ]

@@ -1,4 +1,4 @@
-import {BASE_URL} from "@/config/app";
+import { BASE_URL } from '@/config/app'
 
 export default {
     sign: BASE_URL + '/sign',
@@ -49,9 +49,5 @@ export default {
     toolInfo: BASE_URL + '/tools/info',
     toolEdit: BASE_URL + '/tools/edit',
     toolIconUpload: BASE_URL + '/tools/upload',
-    toolSortChange: BASE_URL + '/tools/sort',
-    // 基因集分类（公共基因集）
-    geneSetCategory: BASE_URL + '/geneset/category',
-    geneSetCategoryCreate: BASE_URL + '/geneset/category/create',
-    geneSetCategoryDelete: BASE_URL + '/geneset/category/delete'
+    toolSortChange: BASE_URL + '/tools/sort'
 }
