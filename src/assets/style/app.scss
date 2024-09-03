@@ -127,6 +127,18 @@ a {
     }
 }
 
+.el-aside .el-menu .iconfont {
+    font-size: 14px;
+}
+
+.el-menu-item [class^=iconfont] {
+    font-size: 18px;
+    margin-right: 5px;
+    text-align: center;
+    vertical-align: middle;
+    width: var(--el-menu-icon-width);
+}
+
 @keyframes myfirst {
     0% {
         top: 150px;
@@ -456,20 +468,21 @@ code {
 }
 
 .static-item {
-    text-align: center;
-
-    h3 {
-        font-size: 14px;
-        font-weight: normal;
-        color: #909399;
+    p {
+        margin: 0;
+        line-height: 2;
     }
 
     .num {
-        font-size: 32px;
-        font-weight: bold;
+        font-size: 16px;
         margin-top: 0;
         margin-bottom: 0;
         white-space: nowrap;
+
+        strong {
+            font-weight: bold;
+            font-size: 1.3em;
+        }
     }
 
     .static-icon {

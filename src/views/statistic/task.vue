@@ -1,30 +1,31 @@
 <template>
     <PageHeader description="可以按年、月、日来统计任务数量" :has-bread="true" :image="image" />
-    <el-card shadow="never" v-loading="loading">
-        <el-row class="static-item">
-            <el-col :span="4">
-                <h3>总任务数</h3>
-                <p class="num">{{ task }}</p>
+    <el-card shadow="never" class="border-less" v-loading="loading">
+        <el-row class="static-item" style="text-align: center">
+            <el-col :span="4" :offset="2">
+                <p class="num">
+                    总任务数 <strong>{{ task_total }}</strong>
+                </p>
             </el-col>
             <el-col :span="4">
-                <h3>已完成任务</h3>
-                <p class="num">{{ complete }}</p>
+                <p class="num">
+                    已完成任务: <strong>{{ task_success }}</strong>
+                </p>
             </el-col>
             <el-col :span="4">
-                <h3>失败任务数</h3>
-                <p class="num">{{ fail }}</p>
+                <p class="num">
+                    失败任务数: <strong>{{ task_error }}</strong>
+                </p>
             </el-col>
             <el-col :span="4">
-                <h3>未开始任务</h3>
-                <p class="num">{{ not_started }}</p>
+                <p class="num">
+                    未开始任务: <strong>{{ task_queue }}</strong>
+                </p>
             </el-col>
             <el-col :span="4">
-                <h3>进行中任务</h3>
-                <p class="num">{{ starting }}</p>
-            </el-col>
-            <el-col :span="4">
-                <h3>写入中任务</h3>
-                <p class="num">{{ writing }}</p>
+                <p class="num">
+                    进行中任务: <strong>{{ task_running }}</strong>
+                </p>
             </el-col>
         </el-row>
     </el-card>
@@ -102,6 +103,7 @@ import ToolState from '_c/ToolState.vue'
 import TaskState from '_c/TaskState.vue'
 import PageHeader from '_c/PageHeader.vue'
 import image from '@img/statistic.svg'
+import { indexStatistic } from '@/request/modules/statistic'
 
 export default {
     components: {
@@ -121,35 +123,28 @@ export default {
             day: `${date.getFullYear()}${month}${day}`,
             year: `${date.getFullYear()}`,
             loading: false,
-            task: 0,
-            complete: 0,
-            fail: 0,
-            not_started: 0,
-            starting: 0,
-            total_size: 0,
-            writing: 0
+            task_total: 0,
+            task_success: 0,
+            task_queue: 0,
+            task_error: 0,
+            task_running: 0
         }
     },
     methods: {
         fetchData() {
             this.loading = true
-            this.$util.get(
-                this.api.index,
-                {},
-                (resp) => {
-                    this.task = resp.task
-                    this.complete = resp.complete
-                    this.fail = resp.fail
-                    this.not_started = resp.not_started
-                    this.starting = resp.starting
-                    this.total_size = resp.total_size
-                    this.writing = resp.writing
+            indexStatistic()
+                .then(({ task_total, task_success, task_queue, task_error, task_running }) => {
+                    this.task_total = task_total
+                    this.task_success = task_success
+                    this.task_queue = task_queue
+                    this.task_error = task_error
+                    this.task_running = task_running
                     this.loading = false
-                },
-                () => {
+                })
+                .catch(() => {
                     this.loading = false
-                }
-            )
+                })
         },
         dateChange(ref) {
             this.$refs[ref].fetchData()

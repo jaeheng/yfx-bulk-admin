@@ -1,14 +1,11 @@
 <template>
     <PageHeader description="查看样本相关统计信息" :has-bread="true" :image="image" />
-    <el-card shadow="never" v-loading="loading">
-        <el-row class="static-item">
-            <el-col :span="24">
-                <h3>总样本数</h3>
-                <p class="num">{{ sample_count }}</p>
-            </el-col>
-        </el-row>
+    <el-card shadow="never" class="border-less" v-loading="loading">
+        <p class="num">
+            总样本数: <strong>{{ sample_total }}</strong>
+        </p>
     </el-card>
-    <el-card shadow="never" style="margin-top: 15px">
+    <el-card shadow="never" class="border-less" style="margin-top: 15px">
         <template #header>
             {{ year }}年样本数统计情况
             <el-date-picker
@@ -29,6 +26,7 @@
 import image from '@img/statistic.svg'
 import PageHeader from '_c/PageHeader.vue'
 import SampleState from '_c/SampleState.vue'
+import { indexStatistic } from '@/request/modules/statistic'
 
 export default {
     components: { SampleState, PageHeader },
@@ -37,24 +35,21 @@ export default {
         return {
             image,
             year: `${date.getFullYear()}`,
-            sample_count: 0,
+            sample_total: 0,
             loading: false
         }
     },
     methods: {
         fetchData() {
             this.loading = true
-            this.$util.get(
-                this.api.index,
-                {},
-                (resp) => {
-                    this.sample_count = resp.total_sample_count
+            indexStatistic()
+                .then(({ sample_total }) => {
+                    this.sample_total = sample_total
                     this.loading = false
-                },
-                () => {
+                })
+                .catch(() => {
                     this.loading = false
-                }
-            )
+                })
         }
     },
     created() {

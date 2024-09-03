@@ -17,3 +17,9 @@ export const indexSample = (year) => {
         params: { year }
     })
 }
+
+export const indexStorage = () => {
+    return request.get('/index/storage', {
+        params: {}
+    })
+}

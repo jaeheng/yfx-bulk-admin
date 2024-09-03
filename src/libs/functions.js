@@ -12,8 +12,8 @@ import { ElMessage } from 'element-plus'
  * return false表示filename参数没有后缀
  */
 export const getSuffix = (filename) => {
-  let index = filename.lastIndexOf('.')
-  return index === -1 ? false : filename.substr(index + 1)
+    let index = filename.lastIndexOf('.')
+    return index === -1 ? false : filename.substr(index + 1)
 }
 
 /**
@@ -24,10 +24,10 @@ export const getSuffix = (filename) => {
  * @returns {boolean}
  */
 export const inArray = (elem, arr, i) => {
-  if (!(arr instanceof Array)) {
-    return false
-  }
-  return arr.indexOf(elem, i) > -1
+    if (!(arr instanceof Array)) {
+        return false
+    }
+    return arr.indexOf(elem, i) > -1
 }
 /**
  * 发送请求
@@ -38,49 +38,49 @@ export const inArray = (elem, arr, i) => {
  * @param error 失败回调: message
  */
 export const http = (type, url, data, success, error) => {
-  Nprogress.start()
+    Nprogress.start()
 
-  let config = {
-    method: type,
-    url: url,
-    withCredentials: true,
-    headers: {
-      Authorization: getToken()
+    let config = {
+        method: type,
+        url: url,
+        withCredentials: true,
+        headers: {
+            Authorization: getToken()
+        }
     }
-  }
 
-  if (type === 'post' || type === 'put' || type === 'delete') {
-    config.data = qs.stringify(data)
-  } else if (type === 'get') {
-    config.params = data
-  }
-  axios(config)
-    .then((response) => {
-      let data = response.data.content
-      let code = response.data.code
-      let message = response.data.message
-      // 请求返回正常数据
-      if (code === 200) {
-        typeof success === 'function' && success(data, message)
-      } else if (code === 401) {
-        setToken('')
-        setTimeout(() => {
-          // window.location.href = '/#/'
-          window.location.href = '/#/?redirect=' + window.location.hash.substring(1)
-        }, 300)
-      } else if (code === 402) {
-        window.location.href = '/#/forbidden'
-      } else {
-        ElMessage.error(message)
-        typeof error === 'function' && error(message)
-      }
-      Nprogress.done()
-    })
-    .catch(function (err) {
-      ElMessage.error(err.message)
-      typeof error === 'function' && error(err.message)
-      Nprogress.done()
-    })
+    if (type === 'post' || type === 'put' || type === 'delete') {
+        config.data = qs.stringify(data)
+    } else if (type === 'get') {
+        config.params = data
+    }
+    axios(config)
+        .then((response) => {
+            let data = response.data.content
+            let code = response.data.code
+            let message = response.data.message
+            // 请求返回正常数据
+            if (code === 200) {
+                typeof success === 'function' && success(data, message)
+            } else if (code === 401) {
+                setToken('')
+                setTimeout(() => {
+                    // window.location.href = '/#/'
+                    window.location.href = '/#/?redirect=' + window.location.hash.substring(1)
+                }, 300)
+            } else if (code === 402) {
+                window.location.href = '/#/forbidden'
+            } else {
+                ElMessage.error(message)
+                typeof error === 'function' && error(message)
+            }
+            Nprogress.done()
+        })
+        .catch(function (err) {
+            ElMessage.error(err.message)
+            typeof error === 'function' && error(err.message)
+            Nprogress.done()
+        })
 }
 
 /**
@@ -91,7 +91,7 @@ export const http = (type, url, data, success, error) => {
  * @param error
  */
 export const get = (url, params, success, error) => {
-  http('get', url, params, success, error)
+    http('get', url, params, success, error)
 }
 
 /**
@@ -102,7 +102,7 @@ export const get = (url, params, success, error) => {
  * @param error
  */
 export const post = (url, params, success, error) => {
-  http('post', url, params, success, error)
+    http('post', url, params, success, error)
 }
 
 /**
@@ -111,9 +111,10 @@ export const post = (url, params, success, error) => {
  * @returns {*|boolean}
  */
 export const checkHex = (tester) => {
-  return (
-    _.isString(tester) && (tester.match(/^#[0-9a-fA-F]{6}$/) || tester.match(/^#[0-9a-fA-F]{3}$/))
-  )
+    return (
+        _.isString(tester) &&
+        (tester.match(/^#[0-9a-fA-F]{6}$/) || tester.match(/^#[0-9a-fA-F]{3}$/))
+    )
 }
 
 /**
@@ -122,9 +123,21 @@ export const checkHex = (tester) => {
  * @returns {`${number}/${number}/${number}`}
  */
 export const dateFmt = (second) => {
-  const date = new Date(second * 1000)
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  return `${year}/${month}/${day}`
+    const date = new Date(second * 1000)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return `${year}/${month}/${day}`
+}
+
+export const formatBytes = (bytes, decimals = 2) => {
+    if (bytes === 0) return '0 Bytes'
+
+    const k = 1024
+    const dm = decimals < 0 ? 0 : decimals
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
 }

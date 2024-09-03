@@ -17,7 +17,7 @@
                 </el-icon>
             </el-button>
         </template>
-        <el-table :data="tableData" v-loading="loading" stripe size="small">
+        <el-table :data="tableData" v-loading="loading" stripe size="small" height="440px">
             <el-table-column label="ID" prop="id" width="80" />
             <el-table-column label="任务名称" prop="task_name" />
             <el-table-column label="所属项目" prop="project.project" />
@@ -34,15 +34,6 @@
                 </template>
             </el-table-column>
         </el-table>
-
-        <el-pagination
-            background
-            :layout="PAGE_LAYOUT"
-            :total="total"
-            :page-size="PAGE_SIZE"
-            @current-change="currentChange"
-        >
-        </el-pagination>
     </el-card>
 </template>
 

@@ -228,6 +228,14 @@ export default {
                     meta: {
                         title: '样本数据统计'
                     }
+                },
+                {
+                    path: '/statistic/storage',
+                    name: 'statisticStorage',
+                    component: () => import('_v/statistic/storage.vue'),
+                    meta: {
+                        title: '数据大小统计'
+                    }
                 }
             ]
         }
