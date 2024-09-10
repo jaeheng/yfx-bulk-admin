@@ -1,26 +1,28 @@
 <template>
     <Layout class="tool">
         <page-header description="新建工具需要手动操作,请联系开发人员" has-bread :image="image" />
-        <div class="container">
-            <el-card header="筛选条件" style="margin-bottom: 10px" shadow="never">
-                <el-form label-position="left" label-width="120px">
-                    <el-form-item label="状态">
-                        <el-radio-group v-model="form.state" @change="filterChange">
-                            <el-radio value="T">正常</el-radio>
-                            <el-radio value="F">隐藏</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-form>
-            </el-card>
-            <el-card :header="'工具列表 (共: ' + total + ' 个工具)'" class="tool" shadow="never">
-                <toolList
-                    :data="toolListFilter"
-                    :platform="platform"
-                    @refresh="fetchData"
-                    v-loading="loading"
-                ></toolList>
-            </el-card>
-        </div>
+        <el-card class="border-less" style="margin-bottom: 10px" shadow="never">
+            <el-form inline>
+                <el-form-item label="状态:" style="margin-bottom: 0">
+                    <el-radio-group v-model="form.state" @change="filterChange">
+                        <el-radio value="T">正常</el-radio>
+                        <el-radio value="F">隐藏</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+            </el-form>
+        </el-card>
+        <el-card
+            class="border-less tool"
+            :header="'工具列表 (共: ' + total + ' 个工具)'"
+            shadow="never"
+        >
+            <toolList
+                :data="toolListFilter"
+                :platform="platform"
+                @refresh="fetchData"
+                v-loading="loading"
+            ></toolList>
+        </el-card>
     </Layout>
 </template>
 <style>

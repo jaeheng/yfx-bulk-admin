@@ -6,7 +6,7 @@
             :image="image"
             :hasBread="false"
         />
-        <el-card shadow="never" header="队列列表" style="margin-top: 10px">
+        <el-card class="border-less" shadow="never" header="队列列表" style="margin-top: 10px">
             <el-table :data="tableData" v-loading="loading" row-key="id" default-expand-all>
                 <el-table-column label="ID" prop="id" width="120" />
                 <el-table-column label="uuid" prop="uuid" />

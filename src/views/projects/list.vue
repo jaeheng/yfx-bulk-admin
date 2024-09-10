@@ -37,14 +37,15 @@
                         v-model="form.keyword"
                         @keyup.enter="search"
                         placeholder="请输入关键字搜索"
+                        size="large"
                     />
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="search">搜索</el-button>
+                    <el-button type="primary" @click="search" size="large">搜索</el-button>
                 </el-form-item>
             </el-form>
         </el-card>
-        <el-card shadow="never" class="border-less">
+        <el-card class="border-less" shadow="never">
             <el-table :data="tableData" v-loading="loading" row-key="id">
                 <el-table-column label="ID" prop="id" width="110" />
                 <el-table-column label="YFX编号" prop="yfx_id" show-overflow-tooltip />
@@ -70,12 +71,12 @@
                             :to="{ name: 'projectsEdit', params: { id: scope.row.id } }"
                             style="margin: 0 10px"
                         >
-                            <el-button type="primary" plain>
+                            <el-button size="small" round>
                                 <i class="iconfont icon-edit"></i> 编辑
                             </el-button>
                         </router-link>
                         <router-link :to="{ name: 'projectsImport', params: { id: scope.row.id } }">
-                            <el-button type="primary" plain @click="visible = true">
+                            <el-button round size="small">
                                 <i class="iconfont icon-import"></i> 导入
                             </el-button>
                         </router-link>

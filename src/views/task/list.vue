@@ -6,7 +6,7 @@
             :image="image"
             :hasBread="false"
         />
-        <el-card header="搜索条件" shadow="never">
+        <el-card class="border-less" header="搜索条件" shadow="never">
             <el-form :model="form" label-width="120px" label-position="left">
                 <el-row :gutter="15">
                     <el-col :span="12">
@@ -115,7 +115,7 @@
             </el-form>
         </el-card>
 
-        <el-card shadow="never" header="任务列表" style="margin-top: 10px">
+        <el-card class="border-less" header="任务列表" shadow="never" style="margin-top: 10px">
             <el-table
                 :data="tableData"
                 v-loading="loading"
