@@ -1,5 +1,5 @@
 <template>
-    <div class="company">
+    <Layout class="company">
         <PageHeader
             :has-bread="false"
             description="公司信息管理,包括公司公司名称、联系人信息、付费情况等配置"
@@ -226,7 +226,7 @@
                 </el-upload>
             </div>
         </el-dialog>
-    </div>
+    </Layout>
 </template>
 
 <style lang="scss">
@@ -288,13 +288,15 @@ import { getToken } from '@/libs/storage'
 import { dayjs } from 'element-plus'
 import CompanyState from '_c/CompanyState.vue'
 import PaidState from '_c/PaidState.vue'
+import Layout from '_v/layouts/layout.vue'
 
 export default {
     components: {
         PaidState,
         CompanyState,
         check,
-        PageHeader
+        PageHeader,
+        Layout
     },
     data() {
         return {

@@ -1,5 +1,5 @@
 <template>
-    <div class="species">
+    <Layout class="species">
         <page-header description="对物种信息、注释库信息进行统一管理" has-bread :image="image" />
         <el-card shadow="never">
             <el-form inline>
@@ -36,7 +36,7 @@
 
         <Create ref="create" @success="fetchData"></Create>
         <AnnotationBox ref="annotationRef"></AnnotationBox>
-    </div>
+    </Layout>
 </template>
 <script>
 import { deleteSpecies, getSpeciesList } from '@/request/modules/species'
@@ -44,6 +44,7 @@ import PageHeader from '_c/PageHeader.vue'
 import Create from './create.vue'
 import Annotation from './annotation.vue'
 import image from '@img/species.svg'
+import Layout from '_v/layouts/layout.vue'
 
 export default {
     data() {
@@ -56,7 +57,8 @@ export default {
     components: {
         PageHeader,
         Create,
-        AnnotationBox: Annotation
+        AnnotationBox: Annotation,
+        Layout
     },
     methods: {
         fetchData() {

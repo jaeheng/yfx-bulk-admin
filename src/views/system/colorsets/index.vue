@@ -1,5 +1,5 @@
 <template>
-    <div class="color-sets">
+    <Layout class="color-sets">
         <PageHeader
             description="颜色集配置，可管理多组颜色集合供用户选择"
             :has-bread="true"
@@ -23,11 +23,11 @@
                     </h3>
                     <div class="btns">
                         <el-button type="primary" size="small" plain @click="openDrawer(item)"
-                            >编辑</el-button
-                        >
+                            >编辑
+                        </el-button>
                         <el-button type="danger" size="small" plain @click="deleteColorSet(item)"
-                            >删除</el-button
-                        >
+                            >删除
+                        </el-button>
                     </div>
                 </div>
                 <div class="colors">
@@ -77,7 +77,7 @@
                 </el-form-item>
             </el-form>
         </el-drawer>
-    </div>
+    </Layout>
 </template>
 <style lang="scss">
 .color-list {
@@ -142,11 +142,13 @@ import { checkHex } from '@/libs/functions'
 import ColorBar from '_c/ColorBar.vue'
 import PageHeader from '_c/PageHeader.vue'
 import image from '@img/colorsets2.png'
+import Layout from '_v/layouts/layout.vue'
 
 export default {
     components: {
         ColorBar,
-        PageHeader
+        PageHeader,
+        Layout
     },
     data() {
         const checkColorValidate = (rule, value, callback) => {

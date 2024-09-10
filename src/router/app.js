@@ -79,99 +79,48 @@ export const MainMenus = [
     },
     {
         path: '/tool',
-        component: () => import('_v/layout.vue'),
+        name: 'tool',
+        component: () => import('_v/tool/index.vue'),
         meta: {
-            title: '工具管理',
+            title: '工具列表',
             icon: 'icon-tools'
-        },
-        children: [
-            {
-                path: '/tool',
-                name: 'tool',
-                component: () => import('_v/tool/index.vue'),
-                meta: {
-                    title: '工具列表'
-                }
-            }
-        ]
+        }
     },
     {
         path: '/company',
-        component: () => import('_v/layout.vue'),
+        name: 'company',
+        component: () => import('_v/company/index.vue'),
         meta: {
-            title: '公司管理',
+            title: '公司列表',
             icon: 'icon-company'
-        },
-        children: [
-            {
-                path: '/company',
-                name: 'company',
-                component: () => import('_v/company/index.vue'),
-                meta: {
-                    title: '公司列表'
-                }
-            }
-        ]
+        }
     },
     {
-        path: '/system',
-        component: () => import('_v/layout.vue'),
+        path: '/system/species',
+        name: 'species',
+        component: () => import('_v/system/species/index.vue'),
         meta: {
-            title: '系统管理',
-            icon: 'icon-setting2'
-        },
-        children: [
-            {
-                path: '/system',
-                name: 'ucenter',
-                component: () => import('_v/system/ucenter/edit.vue'),
-                meta: {
-                    title: '个人信息'
-                }
-            },
-            {
-                path: '/system/password',
-                name: 'systemPassword',
-                component: () => import('_v/system/ucenter/password.vue'),
-                meta: {
-                    title: '修改密码'
-                }
-            },
-            {
-                path: '/system/species',
-                name: 'species',
-                component: () => import('_v/system/species/index.vue'),
-                meta: {
-                    title: '物种管理'
-                }
-            },
-            {
-                path: '/system/color-sets',
-                name: 'colorSets',
-                component: () => import('_v/system/colorsets/index.vue'),
-                meta: {
-                    title: '颜色集管理'
-                }
-            }
-        ]
+            title: '物种管理',
+            icon: 'icon-mouse'
+        }
+    },
+    {
+        path: '/system/color-sets',
+        name: 'colorSets',
+        component: () => import('_v/system/colorsets/index.vue'),
+        meta: {
+            title: '颜色集合',
+            icon: 'icon-color'
+        }
     },
     {
         path: '/sets',
-        component: () => import('_v/layout.vue'),
+        name: 'publicGeneSet',
+        component: () => import('_v/sets/index.vue'),
         meta: {
-            title: '基因集管理',
+            title: '基因集合',
             icon: 'icon-modular'
-        },
-        children: [
-            {
-                path: '/sets/public',
-                name: 'publicGeneSet',
-                component: () => import('_v/sets/index.vue'),
-                meta: {
-                    title: '基因集列表'
-                }
-            }
-        ]
+        }
     },
     {
         path: '/statistic',
@@ -203,6 +152,32 @@ export const MainMenus = [
                 component: () => import('_v/statistic/storage.vue'),
                 meta: {
                     title: '数据大小统计'
+                }
+            }
+        ]
+    },
+    {
+        path: '/system',
+        component: () => import('_v/layout.vue'),
+        meta: {
+            title: '系统管理',
+            icon: 'icon-setting2'
+        },
+        children: [
+            {
+                path: '/system',
+                name: 'ucenter',
+                component: () => import('_v/system/ucenter/edit.vue'),
+                meta: {
+                    title: '个人信息'
+                }
+            },
+            {
+                path: '/system/password',
+                name: 'systemPassword',
+                component: () => import('_v/system/ucenter/password.vue'),
+                meta: {
+                    title: '修改密码'
                 }
             }
         ]

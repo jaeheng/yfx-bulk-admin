@@ -1,5 +1,5 @@
 <template>
-    <div class="tool">
+    <Layout class="tool">
         <page-header description="新建工具需要手动操作,请联系开发人员" has-bread :image="image" />
         <div class="container">
             <el-card header="筛选条件" style="margin-bottom: 10px" shadow="never">
@@ -21,7 +21,7 @@
                 ></toolList>
             </el-card>
         </div>
-    </div>
+    </Layout>
 </template>
 <style>
 .tool {
@@ -36,12 +36,14 @@ import image from '@img/tool.svg'
 import { DATA_TYPE, SINGLE_CELL_DATA, SPATIAL_DATA } from '@/config/app'
 import { getLocalStorage, setLocalStorage } from '@/libs/storage'
 import { getToolList } from '@/request/modules/tool'
+import Layout from '_v/layouts/layout.vue'
 
 export default {
     props: ['platform'],
     components: {
         toolList,
-        PageHeader
+        PageHeader,
+        Layout
     },
     data() {
         let params = getLocalStorage(`${this.platform}_tool_params`)
