@@ -1,18 +1,11 @@
 <template>
     <div class="projects-create">
-        <div class="container">
-            <BreadCrumb />
-            <el-card shadow="never" header="创建项目">
-                <project-form ref="projectForm" @submit="submitHandle" />
-            </el-card>
-        </div>
+        <BreadCrumb />
+        <el-card shadow="never" class="border-less" header="创建项目">
+            <project-form ref="projectForm" @submit="submitHandle" />
+        </el-card>
     </div>
 </template>
-<style>
-.projects-create {
-    padding-top: 15px;
-}
-</style>
 <script>
 import BreadCrumb from '_c/BreadCrumb.vue'
 import ProjectForm from './form.vue'

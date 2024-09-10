@@ -1,6 +1,6 @@
 <template>
     <span>
-        <el-button plain @click="visible = true">查看</el-button>
+        <el-button type="primary" @click="visible = true">查看</el-button>
         <el-dialog v-model="visible" append-to-body title="项目详情" width="1300px">
             <el-row :gutter="20">
                 <el-col :span="14">
