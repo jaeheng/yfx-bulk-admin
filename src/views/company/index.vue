@@ -8,55 +8,53 @@
             <el-button type="primary" @click="create">新建公司信息</el-button>
         </PageHeader>
 
-        <div class="container">
-            <el-card shadow="never">
-                <el-table :data="list" v-loading="loading">
-                    <el-table-column label="公司LOGO" width="200px">
-                        <template #default="scope">
-                            <el-tooltip content="更换公司LOGO" placement="right">
-                                <div class="avatar-uploader" @click="openUpload(scope.row, 'logo')">
-                                    <img
-                                        v-if="scope.row.logo"
-                                        :src="scope.row.logo"
-                                        class="avatar"
-                                        alt="logo"
-                                    />
-                                    <i v-else class="iconfont icon-plus avatar-uploader-icon"></i>
-                                </div>
-                            </el-tooltip>
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="公司名称" prop="name">
-                        <template #default="scope">
-                            <h3>{{ scope.row.name }}</h3>
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="项目数" prop="project_count" sortable></el-table-column>
-                    <el-table-column label="创建时间" prop="created_at" sortable></el-table-column>
-                    <el-table-column label="状态">
-                        <template #default="scope">
-                            <company-state :state="scope.row.state" />
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="付费情况">
-                        <template #default="scope">
-                            <paid-state
-                                :due-date="new Date(scope.row.due_date).getTime() / 1000"
-                                :is-paid="scope.row.is_paid"
-                            />
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="操作">
-                        <template #default="scope">
-                            <el-button type="primary" @click="edit(scope.row)">编辑</el-button>
-                            <el-button type="primary" plain @click="showMore(scope.row)"
-                                >查看
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-card>
-        </div>
+        <el-card shadow="never" class="border-less">
+            <el-table :data="list" v-loading="loading">
+                <el-table-column label="公司LOGO" width="200px">
+                    <template #default="scope">
+                        <el-tooltip content="更换公司LOGO" placement="right">
+                            <div class="avatar-uploader" @click="openUpload(scope.row, 'logo')">
+                                <img
+                                    v-if="scope.row.logo"
+                                    :src="scope.row.logo"
+                                    class="avatar"
+                                    alt="logo"
+                                />
+                                <i v-else class="iconfont icon-plus avatar-uploader-icon"></i>
+                            </div>
+                        </el-tooltip>
+                    </template>
+                </el-table-column>
+                <el-table-column label="公司名称" prop="name">
+                    <template #default="scope">
+                        <h3>{{ scope.row.name }}</h3>
+                    </template>
+                </el-table-column>
+                <el-table-column label="项目数" prop="project_count" sortable></el-table-column>
+                <el-table-column label="创建时间" prop="created_at" sortable></el-table-column>
+                <el-table-column label="状态">
+                    <template #default="scope">
+                        <company-state :state="scope.row.state" />
+                    </template>
+                </el-table-column>
+                <el-table-column label="付费情况">
+                    <template #default="scope">
+                        <paid-state
+                            :due-date="new Date(scope.row.due_date).getTime() / 1000"
+                            :is-paid="scope.row.is_paid"
+                        />
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template #default="scope">
+                        <el-button type="primary" round @click="showMore(scope.row)"
+                            >查看
+                        </el-button>
+                        <el-button round @click="edit(scope.row)">编辑</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-card>
 
         <el-drawer
             :title="drawerTitle"
@@ -93,7 +91,6 @@
                             <el-form-item label="联系人邮箱:" prop="contact_email">
                                 <el-input
                                     v-model="form.contact_email"
-                                    type="email"
                                     placeholder="请输入公司联系人邮箱"
                                 ></el-input>
                             </el-form-item>
