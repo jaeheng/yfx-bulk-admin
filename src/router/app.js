@@ -153,6 +153,14 @@ export const MainMenus = [
                 meta: {
                     title: '数据大小统计'
                 }
+            },
+            {
+                path: '/statistic/fields',
+                name: 'statisticFields',
+                component: () => import('_v/statistic/fieldsPublic.vue'),
+                meta: {
+                    title: '公共基因表字段'
+                }
             }
         ]
     },

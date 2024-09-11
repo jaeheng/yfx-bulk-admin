@@ -23,3 +23,8 @@ export const indexStorage = () => {
         params: {}
     })
 }
+export const indexFieldsPublic = () => {
+    return request.get('/index/fieldsPublic', {
+        params: {}
+    })
+}
