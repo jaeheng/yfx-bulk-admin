@@ -15,7 +15,7 @@
         <el-table-column label="操作IP" property="ip">
             <template #default="scope">
                 {{ scope.row.ip }}
-                <a :href="`https://www.ipuu.net/query/ip?search=${scope.row.ip}`" target="_blank"
+                <a :href="`https://www.ip138.com/iplookup.php?ip=${scope.row.ip}`" target="_blank"
                     >查询</a
                 >
             </template>
