@@ -6,7 +6,12 @@
         <el-table-column label="模块" property="module"></el-table-column>
         <el-table-column label="消息" property="message"></el-table-column>
         <el-table-column label="操作时间" property="created_at"></el-table-column>
-        <el-table-column label="操作用户" property="user.project"></el-table-column>
+        <el-table-column label="操作用户" property="user"></el-table-column>
+        <el-table-column label="操作区域" property="is_admin">
+            <template #default="scope">
+                {{ scope.row.is_admin ? '后台' : '前台' }}
+            </template>
+        </el-table-column>
         <el-table-column label="操作IP" property="ip">
             <template #default="scope">
                 {{ scope.row.ip }}
