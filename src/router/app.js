@@ -161,6 +161,14 @@ export const MainMenus = [
                 meta: {
                     title: '公共基因表字段'
                 }
+            },
+            {
+                path: '/statistic/log',
+                name: 'log',
+                component: () => import('_v/statistic/log.vue'),
+                meta: {
+                    title: '系统日志'
+                }
             }
         ]
     },

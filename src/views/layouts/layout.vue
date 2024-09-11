@@ -57,7 +57,7 @@
                     <div class="menu">
                         <el-dropdown trigger="hover" class="dropdown" @command="handleCommand">
                             <span class="el-dropdown-link">
-                                {{ userInfo.username }} <i class="iconfont icon-down"></i>
+                                {{ userInfo.name }} <i class="iconfont icon-down"></i>
                             </span>
                             <template #dropdown>
                                 <el-dropdown-menu>
