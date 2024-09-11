@@ -98,7 +98,7 @@ export const MainMenus = [
     {
         path: '/system/species',
         name: 'species',
-        component: () => import('_v/system/species/index.vue'),
+        component: () => import('_v/species/index.vue'),
         meta: {
             title: '物种管理',
             icon: 'icon-mouse'
@@ -107,7 +107,7 @@ export const MainMenus = [
     {
         path: '/system/color-sets',
         name: 'colorSets',
-        component: () => import('_v/system/colorsets/index.vue'),
+        component: () => import('_v/colorsets/index.vue'),
         meta: {
             title: '颜色集合',
             icon: 'icon-color'
@@ -167,7 +167,7 @@ export const MainMenus = [
             {
                 path: '/system',
                 name: 'ucenter',
-                component: () => import('_v/system/ucenter/edit.vue'),
+                component: () => import('_v/system/edit.vue'),
                 meta: {
                     title: '个人信息'
                 }
@@ -175,7 +175,7 @@ export const MainMenus = [
             {
                 path: '/system/password',
                 name: 'systemPassword',
-                component: () => import('_v/system/ucenter/password.vue'),
+                component: () => import('_v/system/password.vue'),
                 meta: {
                     title: '修改密码'
                 }

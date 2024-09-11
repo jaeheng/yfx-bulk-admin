@@ -1,6 +1,6 @@
 <template>
     <page-header description="管理员修改自己的项目密码" :image="image"></page-header>
-    <el-card shadow="never">
+    <el-card class="border-less" shadow="never">
         <el-form
             label-width="100px"
             :model="form"
@@ -34,8 +34,8 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" :loading="submitting" @click="submitHandle"
-                    >确认修改</el-button
-                >
+                    >确认修改
+                </el-button>
             </el-form-item>
         </el-form>
     </el-card>
