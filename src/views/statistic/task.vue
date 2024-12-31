@@ -32,7 +32,7 @@
     <ToolState style="margin-top: 15px" />
     <el-row justify="space-between" :gutter="15" style="margin-top: 15px">
         <el-col :span="12">
-            <el-card shadow="never">
+            <el-card shadow="never" class="border-less">
                 <template #header>
                     {{ year }}年每月任务情况
                     <el-date-picker
@@ -56,7 +56,7 @@
             </el-card>
         </el-col>
         <el-col :span="12">
-            <el-card shadow="never">
+            <el-card shadow="never" class="border-less">
                 <template #header>
                     {{ month }}月份每天的任务情况
                     <el-date-picker
@@ -80,7 +80,7 @@
             </el-card>
         </el-col>
     </el-row>
-    <el-card shadow="never" style="margin-top: 15px">
+    <el-card shadow="never" class="border-less" style="margin-top: 15px">
         <template #header>
             {{ day }}每小时的任务情况
             <el-date-picker

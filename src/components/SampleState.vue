@@ -6,7 +6,7 @@
 
 <script>
 import Plotly from '@/libs/plotly'
-import {indexSample} from "@/request/modules/statistic";
+import { indexSample } from '@/request/modules/statistic'
 
 export default {
     props: ['year', 'title'],
@@ -21,49 +21,53 @@ export default {
     methods: {
         fetchData() {
             this.loading = true
-            indexSample(this.year).then(resp => {
-                this.x = resp.month
-                this.count = resp.count
-                this.$nextTick(this.draw)
-                this.loading = false
-            }).catch(() => {
-                this.loading = false
-            })
+            indexSample(this.year)
+                .then((resp) => {
+                    this.x = resp.month
+                    this.count = resp.count
+                    this.$nextTick(this.draw)
+                    this.loading = false
+                })
+                .catch(() => {
+                    this.loading = false
+                })
         },
         draw() {
             const data = [
                 {
-                    x: this.x.map(item => item + '月'),
+                    x: this.x.map((item) => item + '月'),
                     y: this.count,
-                    type: 'line',
+                    type: 'bar',
                     opacity: 0.5,
                     width: 0.3,
                     text: this.count,
-                    marker: {
-                        color: '#f0f'
-                    },
-                    hovertemplate: `${this.title}/%{x}导入了%{y}个单细胞样本`,
-                    name: '单细胞样本数'
+                    hovertemplate: `${this.title}/%{x}导入了%{y}个样本`,
+                    name: '样本数'
                 }
             ]
 
-            Plotly.newPlot(this.id, data, {
-                xaxis: {
-                    showgrid: false,
-                    automargin: true,
-                    type: 'category'
+            Plotly.newPlot(
+                this.id,
+                data,
+                {
+                    xaxis: {
+                        showgrid: false,
+                        automargin: true,
+                        type: 'category'
+                    },
+                    yaxis: {
+                        automargin: true
+                    },
+                    margin: {
+                        t: 0,
+                        b: 0
+                    },
+                    hovermode: 'x unified'
                 },
-                yaxis: {
-                    automargin: true
-                },
-                margin: {
-                    t: 0,
-                    b: 0
-                },
-                hovermode: 'x unified'
-            }, {
-                displayModeBar: false
-            })
+                {
+                    displayModeBar: false
+                }
+            )
         }
     },
     mounted() {

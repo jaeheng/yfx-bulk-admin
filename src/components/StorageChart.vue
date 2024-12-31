@@ -35,11 +35,17 @@ export default {
                 {
                     x: this.x,
                     y: this.y,
-                    type: 'bar',
+                    type: 'scatter',
+                    mode: 'lines',
                     width: 0.7,
                     text: this.y.map((v) => {
                         return formatBytes(v)
                     }),
+                    line: {
+                        shape: 'spline', // 设置曲线为平滑曲线
+                        color: 'blue', // 曲线颜色
+                        width: 2 // 曲线宽度
+                    },
                     hovertemplate: `%{text}`,
                     name: '存储大小统计'
                 }
@@ -56,7 +62,9 @@ export default {
                     },
                     yaxis: {
                         showgrid: false,
-                        automargin: true
+                        automargin: true,
+                        tickformat: '~s',
+                        ticksuffix: 'B'
                     },
                     hovermode: 'x unified',
                     margin: {

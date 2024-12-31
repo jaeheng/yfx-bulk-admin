@@ -1,12 +1,12 @@
 <template>
     <PageHeader description="查看数据存储空间相关统计信息" :has-bread="true" :image="image" />
-    <el-card shadow="never" v-loading="loading">
+    <el-card shadow="never" class="border-less" v-loading="loading">
         <p class="num">
             总数据大小: <strong>{{ storage_size }}</strong>
         </p>
     </el-card>
-    <el-card shadow="never" style="margin-top: 15px">
-        <template #header> 数据大小增长情况 </template>
+    <el-card shadow="never" style="margin-top: 15px" class="border-less">
+        <template #header> 数据大小增长情况</template>
         <storage-chart />
     </el-card>
 </template>

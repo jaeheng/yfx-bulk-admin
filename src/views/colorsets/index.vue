@@ -5,7 +5,7 @@
             :has-bread="true"
             :image="image"
         />
-        <el-card shadow="never">
+        <el-card shadow="never" class="border-less">
             <el-form inline>
                 <el-form-item style="margin-bottom: 0">
                     <el-button type="primary" @click="openDrawer()">新建颜色集</el-button>
@@ -22,7 +22,7 @@
                         >
                     </h3>
                     <div class="btns">
-                        <el-button type="primary" size="small" plain @click="openDrawer(item)"
+                        <el-button type="primary" size="small" @click="openDrawer(item)"
                             >编辑
                         </el-button>
                         <el-button type="danger" size="small" plain @click="deleteColorSet(item)"
@@ -86,7 +86,6 @@
     li {
         padding: 20px;
         display: block;
-        border: 1px solid #eee;
         position: relative;
         margin-bottom: 15px;
         background: #fff;
@@ -94,13 +93,14 @@
 
         &:hover {
             box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.1);
+            background: #fafafa;
         }
     }
 
     .info {
         display: flex;
-        padding: 15px 0 30px;
         justify-content: space-between;
+        padding-bottom: 20px;
     }
 
     h3 {
@@ -117,7 +117,7 @@
 
         span {
             display: inline-block;
-            width: 10%;
+            width: 80px;
             transition: all 0.3s;
             padding: 8px 10px;
             color: #eee;
@@ -125,9 +125,11 @@
             font-size: 12px;
             text-align: center;
             box-sizing: border-box;
+            margin: 5px;
+            border-radius: 6px;
 
             &:hover {
-                transform: scale(1.5);
+                transform: translateY(-5px);
             }
         }
     }
