@@ -1,7 +1,7 @@
 <template>
     <Layout class="species">
         <page-header description="对物种信息、注释库信息进行统一管理" has-bread :image="image" />
-        <el-card shadow="never">
+        <el-card shadow="never" class="border-less">
             <el-form inline>
                 <el-form-item style="margin-bottom: 0">
                     <el-button type="primary" @click="$refs.create.show()"
@@ -11,31 +11,64 @@
             </el-form>
         </el-card>
         <el-empty description="暂无物种数据" v-if="list.length === 0 && !loading"></el-empty>
-        <el-row type="flex" :gutter="15" class="category-list" v-loading="loading">
-            <el-col v-for="item in list" :key="item.id" :span="6">
-                <el-card shadow="never" :body-style="{ padding: '0px' }" class="category-item">
-                    <div style="padding: 14px">
-                        <h3>{{ item.alias }} （{{ item.name }}）</h3>
+
+        <el-tabs
+            v-model="activeName"
+            v-loading="loading"
+            style="background: #fff; padding: 20px; margin-top: 15px"
+        >
+            <el-tab-pane :name="index" v-for="(item, index) in list" :key="item.id">
+                <template #label>
+                    <i
+                        class="iconfont"
+                        :class="`icon-${item.name}`"
+                        style="font-size: 20px; margin-right: 5px"
+                    ></i>
+                    {{ item.alias }}
+                </template>
+                <el-card shadow="never" class="border-less" style="margin-top: 15px">
+                    <div class="flex">
                         <div class="info">
-                            <span>taxid: {{ item.taxid }}</span> <br />
-                            <time class="time">创建: {{ item.created_at }}</time>
-                            <br />
-                            <time class="time">更新: {{ item.updated_at }}</time>
+                            <p>
+                                <i
+                                    class="iconfont"
+                                    :class="`icon-${item.name}`"
+                                    style="font-size: 50px"
+                                ></i>
+                                <strong>{{ item.alias }}({{ item.name }})</strong>
+                            </p>
+                            <p>TAXID: {{ item.taxid }}</p>
+                            <p class="time">创建: {{ item.created_at }}</p>
+                            <p class="time">更新: {{ item.updated_at }}</p>
                         </div>
-                    </div>
-                    <div class="bottom clearfix">
-                        <div class="button" @click="$refs.annotationRef.show(item)">
-                            <i class="iconfont icon-sample"></i>注释库
+                        <div>
+                            <el-button type="primary" @click="$refs.annotationCreate.show(item.id)">
+                                <i class="iconfont icon-plus"></i>
+                                新建注释库
+                            </el-button>
+                            <el-button type="primary" plain @click="$refs.create.show(item)"
+                                >编辑
+                            </el-button>
+                            <el-button @click="deleteHandler(item)">删除</el-button>
                         </div>
-                        <div class="button" @click="$refs.create.show(item)">编辑</div>
-                        <div class="button" @click="deleteHandler(item)">删除</div>
                     </div>
                 </el-card>
-            </el-col>
-        </el-row>
+                <el-card
+                    style="margin-top: 15px"
+                    shadow="never"
+                    class="border-less"
+                    header="注释库"
+                >
+                    <AnnotationBox
+                        :annotation="item.annotation"
+                        @success="fetchData"
+                    ></AnnotationBox>
+                </el-card>
+            </el-tab-pane>
+        </el-tabs>
 
         <Create ref="create" @success="fetchData"></Create>
-        <AnnotationBox ref="annotationRef"></AnnotationBox>
+        <AnnotationCreate ref="annotationCreate" @success="fetchData"></AnnotationCreate>
     </Layout>
 </template>
 <script>
@@ -45,16 +78,19 @@ import Create from './create.vue'
 import Annotation from './annotation.vue'
 import image from '@img/species.svg'
 import Layout from '_v/layouts/layout.vue'
+import AnnotationCreate from '_v/species/annotationCreate.vue'
 
 export default {
     data() {
         return {
             loading: false,
             list: [],
-            image
+            image,
+            activeName: 0
         }
     },
     components: {
+        AnnotationCreate,
         PageHeader,
         Create,
         AnnotationBox: Annotation,

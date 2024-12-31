@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4108340 */
-  src: url('iconfont.woff2?t=1725347839364') format('woff2'),
-       url('iconfont.woff?t=1725347839364') format('woff'),
-       url('iconfont.ttf?t=1725347839364') format('truetype');
+  src: url('iconfont.woff2?t=1735632229688') format('woff2'),
+       url('iconfont.woff?t=1735632229688') format('woff'),
+       url('iconfont.ttf?t=1735632229688') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,38 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pear:before {
+  content: "\e7e4";
+}
+
+.icon-human:before {
+  content: "\e7ab";
+}
+
+.icon-rhesus_monkey:before {
+  content: "\e6b3";
+}
+
+.icon-pig:before {
+  content: "\f166";
+}
+
+.icon-honey_bee:before {
+  content: "\e8f2";
+}
+
+.icon-Zebrafish:before {
+  content: "\e644";
+}
+
+.icon-Caenorhabditis_elegans:before {
+  content: "\e645";
+}
+
+.icon-logo-icon:before {
+  content: "\e64a";
 }
 
 .icon-shousuo:before {
@@ -335,10 +367,6 @@
 
 .icon-help:before {
   content: "\e615";
-}
-
-.icon-human:before {
-  content: "\e617";
 }
 
 .icon-remark:before {

@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6803552",
+      "name": "Pear",
+      "font_class": "pear",
+      "unicode": "e7e4",
+      "unicode_decimal": 59364
+    },
+    {
+      "icon_id": "1444749",
+      "name": "human-male-female",
+      "font_class": "human",
+      "unicode": "e7ab",
+      "unicode_decimal": 59307
+    },
+    {
+      "icon_id": "5482920",
+      "name": "猴",
+      "font_class": "rhesus_monkey",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "19738078",
+      "name": "猪",
+      "font_class": "pig",
+      "unicode": "f166",
+      "unicode_decimal": 61798
+    },
+    {
+      "icon_id": "6804657",
+      "name": "Bee",
+      "font_class": "honey_bee",
+      "unicode": "e8f2",
+      "unicode_decimal": 59634
+    },
+    {
+      "icon_id": "35973154",
+      "name": "luofeiyu",
+      "font_class": "Zebrafish",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "4552065",
+      "name": "线虫",
+      "font_class": "Caenorhabditis_elegans",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "42241438",
+      "name": "分析",
+      "font_class": "logo-icon",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
       "icon_id": "16479811",
       "name": "收缩",
       "font_class": "shousuo",
@@ -571,13 +627,6 @@
       "font_class": "help",
       "unicode": "e615",
       "unicode_decimal": 58901
-    },
-    {
-      "icon_id": "765290",
-      "name": "我的",
-      "font_class": "human",
-      "unicode": "e617",
-      "unicode_decimal": 58903
     },
     {
       "icon_id": "866885",
