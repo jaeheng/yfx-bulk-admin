@@ -26,7 +26,7 @@
                 </div>
                 <div class="bottom clearfix">
                     <div class="button" @click="$refs.json.show(item)">详细信息</div>
-                    <div class="button" @click="$refs.create.show(info.id, item)">编辑</div>
+                    <div class="button" @click="$refs.create.show(species_id, item)">编辑</div>
                 </div>
             </el-card>
         </div>
@@ -70,6 +70,10 @@ export default {
             default: () => {
                 return []
             }
+        },
+        species_id: {
+            type: Number,
+            required: true
         }
     },
     components: {
@@ -78,17 +82,11 @@ export default {
     },
     data() {
         return {
-            visible: false,
-            info: {},
             loading: false,
             ANNOTATION_PREFIX
         }
     },
     methods: {
-        show(row) {
-            this.info = row
-            this.visible = true
-        },
         success() {
             this.$emit('success')
         }

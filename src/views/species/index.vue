@@ -35,8 +35,11 @@
                                     :class="`icon-${item.name}`"
                                     style="font-size: 50px"
                                 ></i>
-                                <strong>{{ item.alias }}({{ item.name }})</strong>
                             </p>
+                            <p>
+                                <strong>ID: {{ item.id }}</strong>
+                            </p>
+                            <p style="font-weight: bold">{{ item.alias }} ({{ item.name }})</p>
                             <p>TAXID: {{ item.taxid }}</p>
                             <p class="time">创建: {{ item.created_at }}</p>
                             <p class="time">更新: {{ item.updated_at }}</p>
@@ -62,6 +65,7 @@
                     <AnnotationBox
                         :annotation="item.annotation"
                         @success="fetchData"
+                        :species_id="item.id"
                     ></AnnotationBox>
                 </el-card>
             </el-tab-pane>
