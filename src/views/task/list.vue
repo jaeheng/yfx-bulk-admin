@@ -57,7 +57,8 @@
                     <el-col :span="12">
                         <el-form-item label="是否删除">
                             <el-radio-group v-model="form.deleted_at">
-                                <el-radio value="">否</el-radio>
+                                <el-radio value="all">全部</el-radio>
+                                <el-radio value="N">否</el-radio>
                                 <el-radio value="Y">是</el-radio>
                             </el-radio-group>
                         </el-form-item>
@@ -130,11 +131,21 @@
                 <el-table-column label="创建时间" prop="created_at" />
                 <el-table-column label="状态" width="100">
                     <template #default="scope">
-                        <!-- -1未开始  0进行中  1成功 2 失败 3写入中 -->
-                        <import-state :state="scope.row.state"
-                            >{{ state[scope.row.state].text }}
-                        </import-state>
-                        <span v-if="scope.row.deleted_at">(已删除)</span>
+                        <div class="task-status">
+                            <!-- -1未开始  0进行中  1成功 2 失败 3写入中 -->
+                            <import-state :state="scope.row.state"
+                                >{{ state[scope.row.state].text }}
+                            </import-state>
+                            <el-tooltip
+                                v-if="scope.row.deleted_at"
+                                content="已删除"
+                                placement="top"
+                            >
+                                <el-icon class="deleted-icon" aria-label="已删除">
+                                    <Delete />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
                     </template>
                 </el-table-column>
                 <el-table-column label="运行状态" width="100">
@@ -169,6 +180,18 @@
     .el-form-item--large {
         margin-bottom: 5px;
     }
+
+    .task-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+    .deleted-icon {
+        color: #909399;
+        font-size: 14px;
+    }
 }
 </style>
 
@@ -181,9 +204,11 @@ import ImportState from '_c/ImportState.vue'
 import { taskList } from '@/request/modules/task'
 import { getToolList } from '@/request/modules/tool'
 import TaskStateButton from '_c/taskStateButton.vue'
+import { Delete } from '@element-plus/icons-vue'
 
 export default {
     components: {
+        Delete,
         TaskStateButton,
         PageHeader,
         more,
@@ -206,7 +231,7 @@ export default {
                 uid: '',
                 displayType: 'normal',
                 rangTime: [],
-                deleted_at: ''
+                deleted_at: 'all'
             },
             uidLoading: false,
             toolLoading: false,
