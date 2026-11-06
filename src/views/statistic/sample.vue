@@ -20,23 +20,34 @@
         </template>
         <SampleState ref="yearSampleChart" :year="year" :title="`${year}`"></SampleState>
     </el-card>
+    <el-card shadow="never" class="border-less" style="margin-top: 15px">
+        <template #header>用户样本数排行（前100名）</template>
+        <UserStatisticChart
+            :loader="userSampleLoader"
+            value-key="sample_count"
+            value-label="样本数"
+            colorscale="Greens"
+        />
+    </el-card>
 </template>
 
 <script>
 import image from '@img/statistic.svg'
 import PageHeader from '_c/PageHeader.vue'
 import SampleState from '_c/SampleState.vue'
-import { indexStatistic } from '@/request/modules/statistic'
+import UserStatisticChart from '_c/UserStatisticChart.vue'
+import { indexSampleByUser, indexStatistic } from '@/request/modules/statistic'
 
 export default {
-    components: { SampleState, PageHeader },
+    components: { UserStatisticChart, SampleState, PageHeader },
     data() {
         const date = new Date()
         return {
             image,
             year: `${date.getFullYear()}`,
             sample_total: 0,
-            loading: false
+            loading: false,
+            userSampleLoader: indexSampleByUser
         }
     },
     methods: {

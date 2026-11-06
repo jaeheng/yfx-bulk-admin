@@ -96,6 +96,10 @@
 
         <TaskState ref="dayChart" :type="1" :date="day" :title="`${day}`" color="#f00"></TaskState>
     </el-card>
+    <el-card shadow="never" class="border-less" style="margin-top: 15px">
+        <template #header>用户任务数排行（前100名）</template>
+        <UserStatisticChart :loader="userTaskLoader" value-key="task_count" value-label="任务数" />
+    </el-card>
 </template>
 
 <script>
@@ -103,13 +107,15 @@ import ToolState from '_c/ToolState.vue'
 import TaskState from '_c/TaskState.vue'
 import PageHeader from '_c/PageHeader.vue'
 import image from '@img/statistic.svg'
-import { indexStatistic } from '@/request/modules/statistic'
+import { indexStatistic, indexTaskByUser } from '@/request/modules/statistic'
+import UserStatisticChart from '_c/UserStatisticChart.vue'
 
 export default {
     components: {
         PageHeader,
         ToolState,
-        TaskState
+        TaskState,
+        UserStatisticChart
     },
     data() {
         const date = new Date()
@@ -127,7 +133,8 @@ export default {
             task_success: 0,
             task_queue: 0,
             task_error: 0,
-            task_running: 0
+            task_running: 0,
+            userTaskLoader: indexTaskByUser
         }
     },
     methods: {

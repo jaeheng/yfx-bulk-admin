@@ -9,23 +9,36 @@
         <template #header> 数据大小增长情况</template>
         <storage-chart />
     </el-card>
+    <el-card shadow="never" class="border-less" style="margin-top: 15px">
+        <template #header>用户数据大小排行（前100名）</template>
+        <UserStatisticChart
+            :loader="userStorageLoader"
+            value-key="storage_size"
+            formatted-value-key="storage_size_text"
+            value-label="数据大小"
+            tick-suffix="B"
+            colorscale="Oranges"
+        />
+    </el-card>
 </template>
 
 <script>
 import image from '@img/statistic.svg'
 import PageHeader from '_c/PageHeader.vue'
 import StorageChart from '_c/StorageChart.vue'
-import { indexStatistic } from '@/request/modules/statistic'
+import UserStatisticChart from '_c/UserStatisticChart.vue'
+import { indexStatistic, indexStorageByUser } from '@/request/modules/statistic'
 
 export default {
-    components: { StorageChart, PageHeader },
+    components: { UserStatisticChart, StorageChart, PageHeader },
     data() {
         const date = new Date()
         return {
             image,
             year: `${date.getFullYear()}`,
             storage_size: 0,
-            loading: false
+            loading: false,
+            userStorageLoader: indexStorageByUser
         }
     },
     methods: {
